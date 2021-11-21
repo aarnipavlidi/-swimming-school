@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.backgroundStyling {
+  background-color: rgb(255,255,254);
+}
+
+.navbar-title {
+  border: 2px;
+  border-style: solid;
+  border-color: #60b4bd;
+  padding: 10px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.navbar-content {
+  font-family: 'Shippori Antique B1', sans-serif;
+}

@@ -1,10 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import Contact from './components/Contact';
-import Home from './components/Home';
 import NavBar from './components/NavBar';
+import Home from './components/Home';
+import Contact from './components/Contact';
 import Pricing from './components/Pricing';
+import Footer from './components/Footer';
 
 const App = () => {
 
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/hinnasto" component={Pricing} />
         <Route path="/otayhteyttä" component={Contact} />
       </Switch>
+      <Footer />
     </Router>
   );
 };

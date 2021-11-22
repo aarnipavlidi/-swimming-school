@@ -3,7 +3,7 @@ import React from 'react';
 const Contact = () => {
 
   return (
-    <div>
+    <div className="container component-content">
       <p>Olet nyt Contact komponentissa.</p>
     </div>
   );

@@ -3,7 +3,7 @@ import React from 'react';
 const Pricing = () => {
 
   return (
-    <div>
+    <div className="container">
       <p>Olet nyt Pricing komponentissa.</p>
     </div>
   );

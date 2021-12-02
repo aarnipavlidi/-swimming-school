@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
 import NavBar from './components/NavBar';
 import Home from './components/Home';
@@ -26,20 +26,27 @@ const App = () => {
   return (
     <Router>
       <div className="d-flex flex-column" style={{ height: '100vh' }}>
-        <NavBar />
-        <Notification message={statusMessage} checkStatus={status} />
         <Switch>
           <Route exact path="/">
+            <NavBar />
+            <Notification message={statusMessage} checkStatus={status} />
             <Home />
+            <Footer />
           </Route>
           <Route path="/hinnasto">
+            <NavBar />
+            <Notification message={statusMessage} checkStatus={status} />
             <Pricing />
+            <Footer />
           </Route>
           <Route path="/otayhteyttä">
+            <NavBar />
+            <Notification message={statusMessage} checkStatus={status} />
             <Contact getNotification={getNotification}  />
+            <Footer />
           </Route>
+          <Redirect to="/" />
         </Switch>
-        <Footer />
       </div>
     </Router>
   );

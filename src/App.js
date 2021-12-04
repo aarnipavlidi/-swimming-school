@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 
 import NavBar from './components/NavBar';
 import Home from './components/Home';
+import Login from './components/Login';
 import Contact from './components/Contact';
 import Pricing from './components/Pricing';
 import Notification from './components/Notification';
@@ -44,6 +45,9 @@ const App = () => {
             <Notification message={statusMessage} checkStatus={status} />
             <Contact getNotification={getNotification}  />
             <Footer />
+          </Route>
+          <Route path="/pavmin">
+            <Login />
           </Route>
           <Redirect to="/" />
         </Switch>

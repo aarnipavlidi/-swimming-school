@@ -41,3 +41,11 @@ hr.custom-horizontal-line {
   font-size: 15px;
   font-family: 'Shippori Antique B1', sans-serif;
 }
+
+.dashboard-button {
+  background-color: #60b4bd;
+}
+
+.dashboard-button:hover {
+  background-color: rgba(96, 180, 189, 0.8); /* Same color as "#60b4bd", but with opacity! :) */
+}

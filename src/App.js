@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
-import NavBar from './components/NavBar';
+import NavBar from './components/Header/NavBar';
+import Login from './components/Login/Login';
 import Dashboard from './components/Dashboard';
 import Home from './components/Home';
-import Login from './components/Login';
 import Contact from './components/Contact';
 import Pricing from './components/Pricing';
 import Notification from './components/Notification';
@@ -45,28 +45,28 @@ const App = () => {
       <div className="d-flex flex-column" style={{ height: '100vh' }}>
         <Switch>
           <Route exact path="/">
-            <NavBar />
+            <NavBar currentToken={currentToken} currentAdminData={currentAdminData} />
             <Notification message={statusMessage} checkStatus={status} />
             <Home />
             <Footer />
           </Route>
           <Route path="/hinnasto">
-            <NavBar />
+            <NavBar currentToken={currentToken} currentAdminData={currentAdminData} />
             <Notification message={statusMessage} checkStatus={status} />
             <Pricing />
             <Footer />
           </Route>
           <Route path="/otayhteyttä">
-            <NavBar />
+            <NavBar currentToken={currentToken} currentAdminData={currentAdminData} />
             <Notification message={statusMessage} checkStatus={status} />
             <Contact getNotification={getNotification}  />
             <Footer />
           </Route>
           <Route path="/pavmin/dashboard">
-            {currentToken && currentAdminData ? <Dashboard /> : <Redirect to="/pavmin" />}
+            {currentToken && currentAdminData ? <Dashboard loading={loading} /> : <Redirect to="/pavmin" />}
           </Route>
           <Route exact path="/pavmin">
-            {currentToken && currentAdminData ? <Redirect to="/pavmin/dashboard" /> : <Login setCurrentToken={setCurrentToken} />}
+            {currentToken && currentAdminData ? <Redirect to="/pavmin/dashboard" /> : <Login setCurrentToken={setCurrentToken} loading={loading} />}
           </Route>
           <Redirect to="/" />
         </Switch>

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import useLogin from '../hooks/useLogin';
+import useLogin from '../../hooks/useLogin';
 
-import '../css/LoginBackground.css';
+import LoginButton from './LoginButton';
+import '../../css/LoginBackground.css';
 
-const Login = ({ setCurrentToken }) => {
+const Login = ({ setCurrentToken, loading }) => {
 
   const history = useHistory();
   const [adminLogin, { adminLoading }] = useLogin();
@@ -26,6 +27,12 @@ const Login = ({ setCurrentToken }) => {
       setCurrentUsername('');
       setCurrentPassword('');
     }
+  };
+
+  const loadingSpinner = {
+    color: '#FFFFFE',
+    width: 50,
+    height: 50
   };
 
   const backgroundStyling = {
@@ -65,9 +72,12 @@ const Login = ({ setCurrentToken }) => {
     color: '#000000'
   };
 
-  const buttonStyling = {
-    marginTop: 25,
-    textAlign: 'center'
+  if (loading) {
+    return (
+      <div style={backgroundStyling}>
+        <div className="spinner-border" style={loadingSpinner}></div>
+      </div>
+    );
   };
 
   return (
@@ -104,9 +114,7 @@ const Login = ({ setCurrentToken }) => {
                   required
                 />
               </div>
-              <div style={buttonStyling}>
-                <button type="submit" className="btn dashboard-button content-font" style={{ color: '#FFFFFE' }}>Kirjaudu sisään</button>
-              </div>
+              <LoginButton buttonLoading={adminLoading} />
             </form>
           </div>
         </div>

@@ -4,6 +4,7 @@ import useLogin from '../../hooks/useLogin';
 
 import LoginButton from './LoginButton';
 import '../../css/LoginBackground.css';
+import '../../css/LoginErrorShake.css';
 
 const Login = ({ setCurrentToken, loading }) => {
 
@@ -12,11 +13,11 @@ const Login = ({ setCurrentToken, loading }) => {
 
   const [currentUsername, setCurrentUsername] = useState('');
   const [currentPassword, setCurrentPassword] = useState('');
+  const [loginFormShake, setLoginFormShake] = useState(false);
 
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
-
       const { data } = await adminLogin({ username: currentUsername, password: currentPassword });
       const response = await localStorage.getItem('current-admin-token');
       setCurrentToken(response);
@@ -26,7 +27,11 @@ const Login = ({ setCurrentToken, loading }) => {
     } catch (error) {
       setCurrentUsername('');
       setCurrentPassword('');
-    }
+      setLoginFormShake(true)
+      setTimeout(() => {
+        setLoginFormShake(false)
+      }, 1500)
+    };
   };
 
   const loadingSpinner = {
@@ -82,7 +87,7 @@ const Login = ({ setCurrentToken, loading }) => {
 
   return (
     <div className="animated-background" style={backgroundStyling}>
-      <div className="container">
+      <div className={loginFormShake ? 'container + loginFormShake' : 'container'}>
         <div className="row" style={{ justifyContent: 'center' }}>
           <div className="col-9 col-md-5 shadow-lg rounded-3" style={loginFormStyling}>
             <div style={textStyling}>

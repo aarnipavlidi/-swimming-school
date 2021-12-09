@@ -4,11 +4,7 @@ import { ADMIN_LOGIN } from '../graphql/mutations';
 const useLogin = () => {
 
   const client = useApolloClient();
-  const [getAdminCredentials, { loading }] = useMutation(ADMIN_LOGIN, {
-    onError: (error) => {
-      console.log(error)
-    }
-  });
+  const [getAdminCredentials, { loading }] = useMutation(ADMIN_LOGIN);
 
   const adminLogin = async ({ username, password }) => {
 

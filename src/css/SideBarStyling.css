@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   padding: 0 100px;
-  background: #262626;
+  background: var(--primary-color);
   width: 100%;
   box-sizing: border-box;
 }
@@ -40,7 +40,10 @@
   display: block;
 }
 
-.header-a:hover,
+.header-a:hover {
+  background-color: yellow;
+}
+
 .header-a.active {
   color: #fff;
   background: #2196f3;
@@ -62,13 +65,19 @@
 
   .header-toggle {
     display: block;
+    transition: 0.5s;
+  }
+
+  .header-toggle-active {
+    transform: rotate(90deg);
+    transition: 0.5s;
   }
 
   .header-nav {
     position: absolute;
     width: 100%;
     height: calc(100vh - 50px);
-    background: #333;
+    background: var(--primary-color);
     top: 50px;
     left: -100%;
     transition: 0.5s;

@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&display=swap'); /* At this moment using for rest of the content only. */
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap'); /* At this moment using for titles only. */
 
+:root {
+  --primary-color: #60b4bd;
+  --secondary-color: ##fffffe;
+}
+
 .navbar-title {
   border: 3px;
   border-style: solid;

@@ -38,18 +38,18 @@ const DashboardSideBar = ({ currentAdminData, loading }) => {
       <div className={collapseStatus ? 'active + header-nav' : 'header-nav'}>
         <ul className="header-ul">
           <li className="header-li">
-            <a className="active"><NavLink className="header-a" exact to="/pavmin/dashboard">ETUSIVU</NavLink></a>
+            <a onClick={() => setCollapseStatus(!collapseStatus)}><NavLink className="header-a" exact activeClassName="active" to="/pavmin/dashboard">ETUSIVU</NavLink></a>
           </li>
           <li className="header-li">
-            <a className="active"><NavLink className="header-a" to="/pavmin/dashboard">OMAT TIEDOT</NavLink></a>
+            <a onClick={() => setCollapseStatus(!collapseStatus)}><NavLink className="header-a" exact activeClassName="active" to="/pavmin/dashboard/settings">OMAT TIEDOT</NavLink></a>
           </li>
           <li className="header-li">
-            <a className="active"><NavLink className="header-a" to="/pavmin/dashboard">MUOKKAA SISÄLTÖÄ</NavLink></a>
+            <a onClick={() => setCollapseStatus(!collapseStatus)}><NavLink className="header-a" exact activeClassName="active" to="/pavmin/dashboard/editcontent">MUOKKAA SISÄLTÖÄ</NavLink></a>
           </li>
         </ul>
       </div>
 
-      <div className="header-toggle">
+      <div className={collapseStatus ? 'header-toggle + header-toggle-active' : 'header-toggle'}>
         <i className="fas fa-bars" aria-hidden="true" onClick={() => setCollapseStatus(!collapseStatus)}></i>
       </div>
 

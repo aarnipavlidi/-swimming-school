@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
+// Components for Dashboard folder.
+import Dashboard from './components/Dashboard/Dashboard';
 import DashboardSideBar from './components/Dashboard/DashboardSideBar';
+import EditContent from './components/Dashboard/EditContent';
+import Settings from './components/Dashboard/Settings';
+// Components for Header folder.
 import NavBar from './components/Header/NavBar';
+// Components for Login folder.
 import Login from './components/Login/Login';
-import Home from './components/Home';
+// Rest of the components.
 import Contact from './components/Contact';
-import Pricing from './components/Pricing';
-import Notification from './components/Notification';
 import Footer from './components/Footer';
+import Home from './components/Home';
+import Notification from './components/Notification';
+import Pricing from './components/Pricing';
 
 import useAdmin from './hooks/useAdmin';
 
@@ -62,8 +69,14 @@ const App = () => {
             <Contact getNotification={getNotification}  />
             <Footer />
           </Route>
+          <Route exact path="/pavmin/dashboard/editcontent">
+            {currentToken && currentAdminData ? <><DashboardSideBar currentAdminData={currentAdminData} loading={loading} /><EditContent /></> : <Redirect to="/pavmin" /> }
+          </Route>
+          <Route exact path="/pavmin/dashboard/settings">
+            {currentToken && currentAdminData ? <><DashboardSideBar currentAdminData={currentAdminData} loading={loading} /><Settings /></> : <Redirect to="/pavmin" /> }
+          </Route>
           <Route exact path="/pavmin/dashboard">
-            {currentToken && currentAdminData ? <DashboardSideBar currentAdminData={currentAdminData} loading={loading} /> : <Redirect to="/pavmin" />}
+            {currentToken && currentAdminData ? <><DashboardSideBar currentAdminData={currentAdminData} loading={loading} /><Dashboard /></> : <Redirect to="/pavmin" /> }
           </Route>
           <Route exact path="/pavmin">
             {currentToken && currentAdminData ? <Redirect to="/pavmin/dashboard" /> : <Login setCurrentToken={setCurrentToken} loading={loading} />}

@@ -76,7 +76,7 @@ const App = () => {
             {currentToken && currentAdminData ? <><DashboardSideBar currentAdminData={currentAdminData} loading={loading} /><Settings /></> : <Redirect to="/pavmin" /> }
           </Route>
           <Route exact path="/pavmin/dashboard">
-            {currentToken && currentAdminData ? <><DashboardSideBar currentAdminData={currentAdminData} loading={loading} /><Dashboard /></> : <Redirect to="/pavmin" /> }
+            {currentToken && currentAdminData ? <><DashboardSideBar loading={loading} /><Dashboard currentAdminData={currentAdminData} /></> : <Redirect to="/pavmin" /> }
           </Route>
           <Route exact path="/pavmin">
             {currentToken && currentAdminData ? <Redirect to="/pavmin/dashboard" /> : <Login setCurrentToken={setCurrentToken} loading={loading} />}

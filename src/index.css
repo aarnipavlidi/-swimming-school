@@ -3,7 +3,9 @@
 
 :root {
   --primary-color: #60b4bd;
-  --secondary-color: ##fffffe;
+  --secondary-color: #fffffe;
+  --dashboard-color: #606060;
+  --content-color: #000000;
 }
 
 .navbar-title {

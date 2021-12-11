@@ -2,14 +2,14 @@
   position: absolute;
   top: 0;
   left: 0;
-  padding: 0 100px;
-  background: var(--primary-color);
+  padding: 0 15px;
+  background: var(--dashboard-color);
   width: 100%;
   box-sizing: border-box;
 }
 
 .header-logo {
-  color: #fff;
+  color: var(--secondary-color);
   height: 50px;
   line-height: 50px;
   font-size: 24px;
@@ -34,23 +34,25 @@
 .header-a {
   height: 50px;
   line-height: 50px;
-  padding: 0 20px;
-  color: #fff;
+  padding: 0 15px;
+  color: var(--secondary-color);
   text-decoration: none;
+  font-family: 'Shippori Antique B1', sans-serif;
   display: block;
 }
 
 .header-a:hover {
-  background-color: yellow;
+  background-color: var(--secondary-color);
+  color: var(--dashboard-color);
 }
 
 .header-a.active {
-  color: #fff;
-  background: #2196f3;
+  background-color: var(--secondary-color);
+  color: var(--dashboard-color);
 }
 
 .header-toggle {
-  color: #fff;
+  color: var(--secondary-color);
   float: right;
   line-height: 50px;
   font-size: 24px;
@@ -71,19 +73,21 @@
   .header-toggle-active {
     transform: rotate(90deg);
     transition: 0.5s;
+    border-top: 1px solid transparent;
   }
 
   .header-nav {
     position: absolute;
     width: 100%;
     height: calc(100vh - 50px);
-    background: var(--primary-color);
+    background: var(--dashboard-color);
     top: 50px;
     left: -100%;
     transition: 0.5s;
   }
 
   .header-nav.active {
+    transition: 0.5s;
     left: 0;
   }
 
@@ -92,7 +96,13 @@
     text-align: center;
   }
 
-  .header-a {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  .header-a:hover {
+    background-color: transparent;
+    color: var(--secondary-color);
+  }
+
+  .header-a.active {
+    border-left: 25px solid var(--dashboard-color);
+    border-right: 25px solid var(--dashboard-color);
   }
 }

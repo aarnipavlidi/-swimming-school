@@ -1,10 +1,12 @@
 import React from 'react';
 
-const Dashboard = () => {
+const Dashboard = ({ currentAdminData }) => {
 
   return (
     <div style={{ display: 'flex', flex: 1, marginTop: 50 }}>
-      <h2>Dashboard komponentti</h2>
+      <div className="container">
+        <h2>Dashboard komponentti</h2>
+      </div>
     </div>
   );
 };

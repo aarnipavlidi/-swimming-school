@@ -30,7 +30,7 @@ const NavBar = ({ currentToken, currentAdminData }) => {
                 <a className="nav-link navbar-content"><NavLink activeClassName="active" style={styling} to="/otayhteyttä">Ota yhteyttä</NavLink></a>
               </li>
               <li className="nav-item">
-                <a className="nav-link navbar-content"><NavLink activeClassName="active" style={styling} to="/pavmin/dashboard">Dashboard</NavLink></a>
+                <a className="nav-link navbar-content"><NavLink activeClassName="active" style={styling} to="/pavmin/dashboard">Hallintapaneeli</NavLink></a>
               </li>
             </ul>
           </div>

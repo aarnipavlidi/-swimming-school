@@ -21,6 +21,11 @@
   float: right;
 }
 
+.header-nav-end {
+  display: flex;
+  flex-direction: row;
+}
+
 .header-ul {
   margin: 0;
   padding: 0;
@@ -104,5 +109,14 @@
   .header-a.active {
     border-left: 25px solid var(--dashboard-color);
     border-right: 25px solid var(--dashboard-color);
+  }
+
+  .header-nav-bottom {
+    position: absolute;
+    bottom: 0;
+    flex-direction: column;
+    width: 100%;
+    transition-timing-function: ease-in-out;
+    transition-duration: 3s;
   }
 }

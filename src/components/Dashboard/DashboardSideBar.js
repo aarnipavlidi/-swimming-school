@@ -4,7 +4,8 @@ import '../../css/SideBarStyling.css';
 
 const DashboardSideBar = ({ currentAdminData, loading }) => {
 
-  const [collapseStatus, setCollapseStatus] = useState(false)
+  const [collapseStatus, setCollapseStatus] = useState(false);
+  const [showLinksBottom, setShowLinksBottom] = useState(false);
 
   const loadingStyling = {
     backgroundColor: '#60b4bd',
@@ -20,6 +21,27 @@ const DashboardSideBar = ({ currentAdminData, loading }) => {
     height: 50
   };
 
+  // I had some problems with styling the "bottom navlinks" element.
+  // Everytime user presses the "toggle" button, the bottom links css
+  // element gets changed instantly, because of the ternary operator
+  // function, which causes that element use the same rules, as if
+  // the current "view" would be visible for "pc" users. So I made
+  // for now "dirty fix" and made it so that everytime user decides
+  // to either press the toggle button or one the other links, the
+  // bottom element css rules gets changed with delay, which is
+  // equal to the transition itself. Will look into this later! :)
+  const showToggleContent = () => {
+    if (collapseStatus === true) {
+      setCollapseStatus(false)
+      setTimeout(() => {
+        setShowLinksBottom(false)
+      }, 500)
+    } else {
+      setShowLinksBottom(true)
+      setCollapseStatus(true)
+    };
+  };
+
   if (loading) {
     return (
       <div style={loadingStyling}>
@@ -33,27 +55,29 @@ const DashboardSideBar = ({ currentAdminData, loading }) => {
       <div className="header-logo">
         <p>Hallintapaneeli</p>
       </div>
-      <div className={collapseStatus ? 'active + header-nav' : 'header-nav'}>
-        <ul className="header-ul">
-          <li className="header-li">
-            <a onClick={() => setCollapseStatus(!collapseStatus)}><NavLink className="header-a" exact activeClassName="active" to="/pavmin/dashboard">Etusivu</NavLink></a>
-          </li>
-          <li className="header-li">
-            <a onClick={() => setCollapseStatus(!collapseStatus)}><NavLink className="header-a" exact activeClassName="active" to="/pavmin/dashboard/settings">Omat tiedot</NavLink></a>
-          </li>
-          <li className="header-li">
-            <a onClick={() => setCollapseStatus(!collapseStatus)}><NavLink className="header-a" exact activeClassName="active" to="/pavmin/dashboard/editcontent">Muokkaa sisältöä</NavLink></a>
-          </li>
-          <li className="header-li">
-            <a onClick={() => setCollapseStatus(!collapseStatus)}><NavLink className="header-a" exact activeClassName="active" to="/">Takaisin uimakouluun</NavLink></a>
-          </li>
-          <li className="header-li">
-            <a onClick={() => setCollapseStatus(!collapseStatus)}><NavLink className="header-a" to>Kirjaudu ulos</NavLink></a>
-          </li>
-        </ul>
-      </div>
+        <div className={collapseStatus ? 'active + header-nav' : 'header-nav'}>
+          <ul className="header-ul">
+            <li className="header-li">
+              <a onClick={showToggleContent}><NavLink className="header-a" exact activeClassName="active" to="/pavmin/dashboard">Etusivu</NavLink></a>
+            </li>
+            <li className="header-li">
+              <a onClick={showToggleContent}><NavLink className="header-a" exact activeClassName="active" to="/pavmin/dashboard/settings">Omat tiedot</NavLink></a>
+            </li>
+            <li className="header-li">
+              <a onClick={showToggleContent}><NavLink className="header-a" exact activeClassName="active" to="/pavmin/dashboard/editcontent">Muokkaa sisältöä</NavLink></a>
+            </li>
+            <div className={collapseStatus || showLinksBottom ? 'header-nav-bottom' : 'header-nav-end'}>
+              <li className="header-li">
+                <a onClick={showToggleContent}><NavLink className="header-a" exact activeClassName="active" to="/">Takaisin uimakouluun</NavLink></a>
+              </li>
+              <li className="header-li">
+                <a onClick={showToggleContent}><NavLink className="header-a" to>Kirjaudu ulos</NavLink></a>
+              </li>
+            </div>
+          </ul>
+        </div>
       <div className={collapseStatus ? 'header-toggle + header-toggle-active' : 'header-toggle'}>
-        <i className="fas fa-bars" aria-hidden="true" onClick={() => setCollapseStatus(!collapseStatus)}></i>
+        <i className="fas fa-bars" aria-hidden="true" onClick={showToggleContent}></i>
       </div>
     </div>
   );

@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useApolloClient } from '@apollo/client';
 import '../../css/SideBarStyling.css';
 
-const DashboardSideBar = ({ currentAdminData, loading }) => {
+const DashboardSideBar = ({ setCurrentToken, currentAdminData, loading }) => {
+
+  const client = useApolloClient();
 
   const [collapseStatus, setCollapseStatus] = useState(false);
   const [showLinksBottom, setShowLinksBottom] = useState(false);
@@ -53,6 +56,16 @@ const DashboardSideBar = ({ currentAdminData, loading }) => {
     };
   };
 
+  const logoutUserToken = async () => {
+    try {
+      await localStorage.clear();
+      setCurrentToken(null);
+      client.clearStore();
+    } catch (error) {
+      console.log(error.message);
+    };
+  };
+
   if (loading) {
     return (
       <div style={loadingStyling}>
@@ -77,12 +90,12 @@ const DashboardSideBar = ({ currentAdminData, loading }) => {
             <li className="header-li">
               <a onClick={() => showToggleContent('navlink')}><NavLink className="header-a" exact activeClassName="active" to="/pavmin/dashboard/editcontent">Muokkaa sisältöä</NavLink></a>
             </li>
-            <div className={collapseStatus ? 'header-nav-bottom' : 'header-nav-end'}>
+            <div className={collapseStatus || showLinksBottom ? 'header-nav-bottom' : 'header-nav-end'}>
               <li className="header-li">
                 <a onClick={() => showToggleContent('navlink')}><NavLink className="header-a" exact activeClassName="active" to="/">Takaisin uimakouluun</NavLink></a>
               </li>
               <li className="header-li">
-                <a onClick={() => showToggleContent('navlink')}><NavLink className="header-a" to>Kirjaudu ulos</NavLink></a>
+                <a onClick={logoutUserToken}><NavLink className="header-a" to>Kirjaudu ulos</NavLink></a>
               </li>
             </div>
           </ul>

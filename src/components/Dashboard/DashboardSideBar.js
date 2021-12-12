@@ -30,15 +30,26 @@ const DashboardSideBar = ({ currentAdminData, loading }) => {
   // to either press the toggle button or one the other links, the
   // bottom element css rules gets changed with delay, which is
   // equal to the transition itself. Will look into this later! :)
-  const showToggleContent = () => {
-    if (collapseStatus === true) {
+  const showToggleContent = (option) => {
+    if (option === 'toggle' && collapseStatus === false) {
+      setShowLinksBottom(true)
+      setCollapseStatus(true)
+    };
+
+    if (option === 'toggle' && collapseStatus === true) {
+      setCollapseStatus(false)
+      setTimeout(() => {
+        setShowLinksBottom(false)
+      }, 500)
+    };
+
+    if (option === 'navlink' && collapseStatus === true) {
       setCollapseStatus(false)
       setTimeout(() => {
         setShowLinksBottom(false)
       }, 500)
     } else {
-      setShowLinksBottom(true)
-      setCollapseStatus(true)
+      return null
     };
   };
 
@@ -58,26 +69,26 @@ const DashboardSideBar = ({ currentAdminData, loading }) => {
         <div className={collapseStatus ? 'active + header-nav' : 'header-nav'}>
           <ul className="header-ul">
             <li className="header-li">
-              <a onClick={showToggleContent}><NavLink className="header-a" exact activeClassName="active" to="/pavmin/dashboard">Etusivu</NavLink></a>
+              <a onClick={() => showToggleContent('navlink')}><NavLink className="header-a" exact activeClassName="active" to="/pavmin/dashboard">Etusivu</NavLink></a>
             </li>
             <li className="header-li">
-              <a onClick={showToggleContent}><NavLink className="header-a" exact activeClassName="active" to="/pavmin/dashboard/settings">Omat tiedot</NavLink></a>
+              <a onClick={() => showToggleContent('navlink')}><NavLink className="header-a" exact activeClassName="active" to="/pavmin/dashboard/settings">Omat tiedot</NavLink></a>
             </li>
             <li className="header-li">
-              <a onClick={showToggleContent}><NavLink className="header-a" exact activeClassName="active" to="/pavmin/dashboard/editcontent">Muokkaa sisältöä</NavLink></a>
+              <a onClick={() => showToggleContent('navlink')}><NavLink className="header-a" exact activeClassName="active" to="/pavmin/dashboard/editcontent">Muokkaa sisältöä</NavLink></a>
             </li>
-            <div className={collapseStatus || showLinksBottom ? 'header-nav-bottom' : 'header-nav-end'}>
+            <div className={collapseStatus ? 'header-nav-bottom' : 'header-nav-end'}>
               <li className="header-li">
-                <a onClick={showToggleContent}><NavLink className="header-a" exact activeClassName="active" to="/">Takaisin uimakouluun</NavLink></a>
+                <a onClick={() => showToggleContent('navlink')}><NavLink className="header-a" exact activeClassName="active" to="/">Takaisin uimakouluun</NavLink></a>
               </li>
               <li className="header-li">
-                <a onClick={showToggleContent}><NavLink className="header-a" to>Kirjaudu ulos</NavLink></a>
+                <a onClick={() => showToggleContent('navlink')}><NavLink className="header-a" to>Kirjaudu ulos</NavLink></a>
               </li>
             </div>
           </ul>
         </div>
       <div className={collapseStatus ? 'header-toggle + header-toggle-active' : 'header-toggle'}>
-        <i className="fas fa-bars" aria-hidden="true" onClick={showToggleContent}></i>
+        <i className="fas fa-bars" aria-hidden="true" onClick={() => showToggleContent('toggle')}></i>
       </div>
     </div>
   );

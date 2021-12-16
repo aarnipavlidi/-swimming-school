@@ -4,6 +4,7 @@
 :root {
   --primary-color: #60b4bd;
   --secondary-color: #fffffe;
+  --optional-secondary-color: #fafdfe;
   --dashboard-color: #606060;
   --content-color: #000000;
 }

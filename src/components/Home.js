@@ -1,6 +1,15 @@
 import React from 'react';
+import '../css/LoadingSpinner.css';
 
-const Home = () => {
+const Home = ({ loadingContent }) => {
+
+  if (loadingContent) {
+    return (
+      <div className="loadingBackground">
+        <div className="spinner-border loadingSpinner"></div>
+      </div>
+    )
+  };
 
   return (
     <div style={{ flex: 1, marginTop: 20, marginBottom: 20 }} className="container d-flex">

@@ -15,3 +15,19 @@ export const CURRENT_LOGGED_ADMIN = gql`
     }
   }
 `
+
+export const CURRENT_CONTENT = gql`
+  query {
+    showCurrentContent {
+      value
+      pricing {
+        OneTimeSolo
+        OneTimeDuo
+        ThreeTimeSolo
+        ThreeTimeDuo
+        FiveTimeSolo
+        FiveTimeDuo
+      }
+    }
+  }
+`

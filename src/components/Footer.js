@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Footer = () => {
+const Footer = ({ loadingContent }) => {
 
   const footerStyling = {
     backgroundColor: '#60b4bd',
@@ -10,6 +10,10 @@ const Footer = () => {
     marginRight: 5,
     fontSize: 15,
     color: '#000000',
+  };
+
+  if (loadingContent) {
+    return null
   };
 
   return (

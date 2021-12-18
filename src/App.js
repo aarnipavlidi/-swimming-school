@@ -18,14 +18,16 @@ import Notification from './components/Notification';
 import Pricing from './components/Pricing';
 
 import useAdmin from './hooks/useAdmin';
+import useContent from './hooks/useContent';
 
 const App = () => {
 
   const [status, setStatus] = useState('');
   const [statusMessage, setStatusMessage] = useState('');
 
-  const { currentAdminData, loading } = useAdmin();
   const [currentToken, setCurrentToken] = useState(null);
+  const { currentAdminData, loading } = useAdmin();
+  const { currentContent, loadingContent } = useContent();
 
   const getNotification = async (message) => {
     const response = await message;
@@ -54,20 +56,20 @@ const App = () => {
           <Route exact path="/">
             <NavBar currentToken={currentToken} currentAdminData={currentAdminData} />
             <Notification message={statusMessage} checkStatus={status} />
-            <Home />
-            <Footer />
+            <Home loadingContent={loadingContent} />
+            <Footer loadingContent={loadingContent} />
           </Route>
           <Route path="/hinnasto">
             <NavBar currentToken={currentToken} currentAdminData={currentAdminData} />
             <Notification message={statusMessage} checkStatus={status} />
-            <Pricing />
-            <Footer />
+            <Pricing currentContent={currentContent} loadingContent={loadingContent} />
+            <Footer loadingContent={loadingContent} />
           </Route>
           <Route path="/otayhteyttä">
             <NavBar currentToken={currentToken} currentAdminData={currentAdminData} />
             <Notification message={statusMessage} checkStatus={status} />
-            <Contact getNotification={getNotification}  />
-            <Footer />
+            <Contact loadingContent={loadingContent} getNotification={getNotification}  />
+            <Footer loadingContent={loadingContent} />
           </Route>
           <Route exact path="/pavmin/dashboard/editcontent">
             {currentToken && currentAdminData ? <><DashboardSideBar setCurrentToken={setCurrentToken} currentAdminData={currentAdminData} loading={loading} /><EditContent /></> : <Redirect to="/pavmin" /> }

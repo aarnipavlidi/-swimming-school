@@ -1,6 +1,15 @@
 import React from 'react';
+import '../css/LoadingSpinner.css';
 
-const Pricing = () => {
+const Pricing = ({ currentContent, loadingContent }) => {
+
+  if (loadingContent) {
+    return (
+      <div className="loadingBackground">
+        <div className="spinner-border loadingSpinner"></div>
+      </div>
+    )
+  };
 
   return (
     <div style={{ flex: 1, marginTop: 20, marginBottom: 20 }} className="container d-flex">
@@ -10,17 +19,17 @@ const Pricing = () => {
             <div className="col-md text-start">
               <p className="content-font">Hinnat 1 hlö: (Huom. ei sisällä uimahallin sisäänpääsyä)</p>
               <div className="text-center">
-                <p className="content-font">1x45min 49€</p>
-                <p className="content-font">3x45min 140e</p>
-                <p className="content-font">5x45min 220€</p>
+                <p className="content-font">1x45min {currentContent.PricingData?.pricing.OneTimeSolo} €</p>
+                <p className="content-font">3x45min {currentContent.PricingData?.pricing.ThreeTimeSolo} €</p>
+                <p className="content-font">5x45min {currentContent.PricingData?.pricing.FiveTimeSolo} €</p>
               </div>
             </div>
             <div className="col-md text-start">
               <p className="content-font">Hinnat 2 hlö: (Huom. ei sisällä uimahallin sisäänpääsyä)</p>
               <div className="text-center">
-                <p className="content-font">1x45min 49€</p>
-                <p className="content-font">3x45min 140e</p>
-                <p className="content-font">5x45min 220€</p>
+                <p className="content-font">1x45min {currentContent.PricingData?.pricing.OneTimeDuo} €</p>
+                <p className="content-font">3x45min {currentContent.PricingData?.pricing.ThreeTimeDuo} €</p>
+                <p className="content-font">5x45min {currentContent.PricingData?.pricing.FiveTimeDuo} €</p>
               </div>
             </div>
           </div>

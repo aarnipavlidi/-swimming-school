@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import '../css/LoadingSpinner.css';
 import emailjs from 'emailjs-com';
 
 const config = require('../utils/config');
 
-const Contact = ({ getNotification }) => {
+const Contact = ({ loadingContent, getNotification }) => {
 
   const [contactForm, setContactForm] = useState({
     from_name: '',
@@ -56,6 +57,14 @@ const Contact = ({ getNotification }) => {
   const handleForm = (event) => {
     event.preventDefault();
     setContactForm({ ...contactForm, [event.target.name]: event.target.value });
+  };
+
+  if (loadingContent) {
+    return (
+      <div className="loadingBackground">
+        <div className="spinner-border loadingSpinner"></div>
+      </div>
+    )
   };
 
   return (

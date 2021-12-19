@@ -29,6 +29,8 @@ const App = () => {
   const { currentAdminData, loading } = useAdmin();
   const { currentContent, loadingContent } = useContent();
 
+  const [collapseStatus, setCollapseStatus] = useState(false);
+
   const getNotification = async (message) => {
     const response = await message;
     setStatus(response.status);
@@ -72,13 +74,13 @@ const App = () => {
             <Footer loadingContent={loadingContent} />
           </Route>
           <Route exact path="/pavmin/dashboard/editcontent">
-            {currentToken && currentAdminData ? <><DashboardSideBar setCurrentToken={setCurrentToken} currentAdminData={currentAdminData} loading={loading} /><EditContent /></> : <Redirect to="/pavmin" /> }
+            {currentToken && currentAdminData ? <><DashboardSideBar collapseStatus={collapseStatus} setCollapseStatus={setCollapseStatus} setCurrentToken={setCurrentToken} currentAdminData={currentAdminData} loading={loading} /><EditContent collapseStatus={collapseStatus} currentContent={currentContent} /></> : <Redirect to="/pavmin" /> }
           </Route>
           <Route exact path="/pavmin/dashboard/settings">
-            {currentToken && currentAdminData ? <><DashboardSideBar setCurrentToken={setCurrentToken} currentAdminData={currentAdminData} loading={loading} /><Settings /></> : <Redirect to="/pavmin" /> }
+            {currentToken && currentAdminData ? <><DashboardSideBar collapseStatus={collapseStatus} setCollapseStatus={setCollapseStatus} setCurrentToken={setCurrentToken} currentAdminData={currentAdminData} loading={loading} /><Settings /></> : <Redirect to="/pavmin" /> }
           </Route>
           <Route exact path="/pavmin/dashboard">
-            {currentToken && currentAdminData ? <><DashboardSideBar setCurrentToken={setCurrentToken} currentAdminData={currentAdminData} loading={loading} /><Dashboard currentAdminData={currentAdminData} /></> : <Redirect to="/pavmin" /> }
+            {currentToken && currentAdminData ? <><DashboardSideBar collapseStatus={collapseStatus} setCollapseStatus={setCollapseStatus} setCurrentToken={setCurrentToken} currentAdminData={currentAdminData} loading={loading} /><Dashboard currentAdminData={currentAdminData} /></> : <Redirect to="/pavmin" /> }
           </Route>
           <Route exact path="/pavmin">
             {currentToken && currentAdminData ? <Redirect to="/pavmin/dashboard" /> : <Login setCurrentToken={setCurrentToken} loading={loading} />}

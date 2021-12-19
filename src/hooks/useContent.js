@@ -11,8 +11,10 @@ const useContent = () => {
 
   useEffect(() => {
     if (data) {
-      setCurrentContent({ ...currentContent, PricingData: data.showCurrentContent.find(results => results.value === "Pricing")})
-    }
+      setCurrentContent({
+        PricingData: data.showCurrentContent.find(results => results.value === "Pricing")
+      });
+    };
   }, [data]);
 
   return {

@@ -3,11 +3,9 @@ import { NavLink } from 'react-router-dom';
 import { useApolloClient } from '@apollo/client';
 import '../../css/SideBarStyling.css';
 
-const DashboardSideBar = ({ setCurrentToken, currentAdminData, loading }) => {
+const DashboardSideBar = ({ collapseStatus, setCollapseStatus, setCurrentToken, currentAdminData, loading }) => {
 
   const client = useApolloClient();
-
-  const [collapseStatus, setCollapseStatus] = useState(false);
   const [showLinksBottom, setShowLinksBottom] = useState(false);
 
   const loadingStyling = {

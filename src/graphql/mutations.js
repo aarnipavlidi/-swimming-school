@@ -7,3 +7,25 @@ export const ADMIN_LOGIN = gql`
     }
   }
 `
+
+export const UPDATE_PRICING = gql`
+  mutation getPricingValues(
+    $OneTimeSolo: String,
+    $OneTimeDuo: String,
+    $ThreeTimeSolo: String,
+    $ThreeTimeDuo: String,
+    $FiveTimeSolo: String,
+    $FiveTimeDuo: String
+  ) {
+    updatePricing(
+      OneTimeSolo: $OneTimeSolo,
+      OneTimeDuo: $OneTimeDuo,
+      ThreeTimeSolo: $ThreeTimeSolo,
+      ThreeTimeDuo: $ThreeTimeDuo,
+      FiveTimeSolo: $FiveTimeSolo,
+      FiveTimeDuo: $FiveTimeDuo
+    ) {
+      response
+    }
+  }
+`

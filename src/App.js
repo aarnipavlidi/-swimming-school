@@ -74,7 +74,15 @@ const App = () => {
             <Footer loadingContent={loadingContent} />
           </Route>
           <Route exact path="/pavmin/dashboard/editcontent">
-            {currentToken && currentAdminData ? <><DashboardSideBar collapseStatus={collapseStatus} setCollapseStatus={setCollapseStatus} setCurrentToken={setCurrentToken} currentAdminData={currentAdminData} loading={loading} /><EditContent collapseStatus={collapseStatus} currentContent={currentContent} /></> : <Redirect to="/pavmin" /> }
+            {currentToken && currentAdminData ?
+              <>
+                <DashboardSideBar collapseStatus={collapseStatus} setCollapseStatus={setCollapseStatus} setCurrentToken={setCurrentToken} currentAdminData={currentAdminData} loading={loading} />
+                <Notification message={statusMessage} checkStatus={status} />
+                <EditContent currentContent={currentContent} getNotification={getNotification} />
+              </> :
+                <Redirect to="/pavmin"
+              />
+            }
           </Route>
           <Route exact path="/pavmin/dashboard/settings">
             {currentToken && currentAdminData ? <><DashboardSideBar collapseStatus={collapseStatus} setCollapseStatus={setCollapseStatus} setCurrentToken={setCurrentToken} currentAdminData={currentAdminData} loading={loading} /><Settings /></> : <Redirect to="/pavmin" /> }

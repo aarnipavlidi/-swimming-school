@@ -11,15 +11,16 @@ const useUpdatePricing = () => {
   });
 
   const updateCurrentPrices = async ({ oneTimeSolo, oneTimeDuo, threeTimeSolo, threeTimeDuo, fiveTimeSolo, fiveTimeDuo }) => {
+
     try {
       const response = await getPricingValues({
         variables: {
-          OneTimeSolo: oneTimeSolo,
-          OneTimeDuo: oneTimeDuo,
-          ThreeTimeSolo: threeTimeSolo,
-          ThreeTimeDuo: threeTimeDuo,
-          FiveTimeSolo: fiveTimeSolo,
-          FiveTimeDuo: fiveTimeDuo
+          OneTimeSolo: parseInt(oneTimeSolo),
+          OneTimeDuo: parseInt(oneTimeDuo),
+          ThreeTimeSolo: parseInt(threeTimeSolo),
+          ThreeTimeDuo: parseInt(threeTimeDuo),
+          FiveTimeSolo: parseInt(fiveTimeSolo),
+          FiveTimeDuo: parseInt(fiveTimeDuo)
         }
       });
 

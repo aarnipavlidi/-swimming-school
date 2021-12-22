@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PriceButton from './PriceButton';
 import useUpdatePricing from '../../hooks/useUpdatePricing';
 
-const EditContent = ({ collapseStatus, currentContent }) => {
+const EditContent = ({ currentContent, getNotification }) => {
 
   const [updateCurrentPrices, { loadingUpdatePrice }] = useUpdatePricing();
   const [currentPrice, setCurrentPrice] = useState({
@@ -17,6 +17,28 @@ const EditContent = ({ collapseStatus, currentContent }) => {
   const handlePriceChange = (event) => {
     event.preventDefault();
     setCurrentPrice({ ...currentPrice, [event.target.name]: event.target.value })
+  };
+
+  const submitPricesDatabase = async () => {
+    const oneTimeSolo = currentPrice.oneTimeSolo ? currentPrice.oneTimeSolo : currentContent.PricingData.pricing.OneTimeSolo;
+    const oneTimeDuo = currentPrice.oneTimeDuo ? currentPrice.oneTimeDuo : currentContent.PricingData.pricing.OneTimeDuo;
+    const threeTimeSolo = currentPrice.threeTimeSolo ? currentPrice.threeTimeSolo : currentContent.PricingData.pricing.ThreeTimeSolo;
+    const threeTimeDuo = currentPrice.threeTimeDuo ? currentPrice.threeTimeDuo : currentContent.PricingData.pricing.ThreeTimeDuo;
+    const fiveTimeSolo = currentPrice.fiveTimeSolo ? currentPrice.fiveTimeSolo : currentContent.PricingData.pricing.FiveTimeSolo;
+    const fiveTimeDuo = currentPrice.fiveTimeDuo ? currentPrice.fiveTimeDuo : currentContent.PricingData.pricing.FiveTimeDuo;
+
+    try {
+      const response = await updateCurrentPrices({ oneTimeSolo, oneTimeDuo, threeTimeSolo, threeTimeDuo, fiveTimeSolo, fiveTimeDuo });
+      getNotification({
+        message: response.updatePricing.response,
+        status: true
+      });
+    } catch (error) {
+      getNotification({
+        message: error.message,
+        status: false
+      })
+    };
   };
 
   const containerStyling = {
@@ -136,7 +158,7 @@ const EditContent = ({ collapseStatus, currentContent }) => {
             <input name="fiveTimeDuo" onChange={handlePriceChange} value={!currentPrice.fiveTimeDuo ? currentContent.PricingData.pricing.FiveTimeDuo : currentPrice.fiveTimeDuo} type="range" min="0" max="250" step="1" className="form-range" id="fiveTimeDuoSlider" />
           </div>
         </div>
-        <PriceButton updateCurrentPrices={updateCurrentPrices} loadingUpdatePrice={loadingUpdatePrice} />
+        <PriceButton setCurrentPrice={setCurrentPrice} submitPricesDatabase={submitPricesDatabase} loadingUpdatePrice={loadingUpdatePrice} />
       </div>
 
 

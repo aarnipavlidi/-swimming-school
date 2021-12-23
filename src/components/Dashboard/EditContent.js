@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import PriceButton from './PriceButton';
+import Notification from '../Notification';
 import useUpdatePricing from '../../hooks/useUpdatePricing';
 
-const EditContent = ({ currentContent, getNotification }) => {
+const EditContent = ({ currentContent, notificationMessage, notificationStatus, getNotification, collapseStatus }) => {
 
   const [updateCurrentPrices, { loadingUpdatePrice }] = useUpdatePricing();
   const [currentPrice, setCurrentPrice] = useState({
@@ -76,11 +77,16 @@ const EditContent = ({ currentContent, getNotification }) => {
     },
   };
 
+  // TODO: Look into "Notification" component, when user updates prices
+  // and clicks the "toggle" button, it goes away smoothly, but if user
+  // presses the toggle again, it appears too fast and need to fix this.
+  // As of right now the notification lasts for 5 seconds, been defined
+  // at "App" component with "getNotification" function.
+
   return (
     <div style={containerStyling}>
-
-
       <div className="container" style={{ backgroundColor: 'var(--optional-secondary-color)', flex: 1/3 }}>
+        <Notification message={notificationMessage} checkStatus={notificationStatus} collapseStatus={collapseStatus} />
         <div style={{ display: 'flex', marginTop: 10, justifyContent: 'center' }}>
           <p className="shadow rounded content-font" style={{ padding: 10, fontSize: 19, backgroundColor: 'var(--secondary-color)' }}>Hinnasto</p>
         </div>
@@ -160,10 +166,6 @@ const EditContent = ({ currentContent, getNotification }) => {
         </div>
         <PriceButton setCurrentPrice={setCurrentPrice} submitPricesDatabase={submitPricesDatabase} loadingUpdatePrice={loadingUpdatePrice} />
       </div>
-
-
-
-
     </div>
   );
 };

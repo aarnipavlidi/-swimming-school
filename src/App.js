@@ -22,8 +22,8 @@ import useContent from './hooks/useContent';
 
 const App = () => {
 
-  const [status, setStatus] = useState('');
-  const [statusMessage, setStatusMessage] = useState('');
+  const [status, setStatus] = useState(null);
+  const [statusMessage, setStatusMessage] = useState(null);
 
   const [currentToken, setCurrentToken] = useState(null);
   const { currentAdminData, loading } = useAdmin();
@@ -77,8 +77,7 @@ const App = () => {
             {currentToken && currentAdminData ?
               <>
                 <DashboardSideBar collapseStatus={collapseStatus} setCollapseStatus={setCollapseStatus} setCurrentToken={setCurrentToken} currentAdminData={currentAdminData} loading={loading} />
-                <Notification message={statusMessage} checkStatus={status} />
-                <EditContent currentContent={currentContent} getNotification={getNotification} />
+                <EditContent currentContent={currentContent} notificationMessage={statusMessage} notificationStatus={status}  getNotification={getNotification} collapseStatus={collapseStatus} />
               </> :
                 <Redirect to="/pavmin"
               />

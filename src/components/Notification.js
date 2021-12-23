@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Notification = ({ message, checkStatus }) => {
+const Notification = (props) => {
 
   const notificationPositioning = {
     marginTop: '20px',
@@ -12,24 +12,28 @@ const Notification = ({ message, checkStatus }) => {
     backgroundColor: 'rgb(255,255,254)',
   };
 
-  if (message !== null && checkStatus === false) {
+  if (props.collapseStatus === true) {
+    return null
+  }
+
+  if (props.message !== null && props.checkStatus === false) {
     return (
       <div style={notificationPositioning} className="container">
         <div style={notificationStyling} className="container">
           <div className="alert alert-danger shadow-sm" role="alert">
-            {message}
+            {props.message}
           </div>
         </div>
       </div>
     );
   };
 
-  if (message !== null && checkStatus === true) {
+  if (props.message !== null && props.checkStatus === true) {
     return (
       <div style={notificationPositioning} className="container">
         <div style={notificationStyling} className="container">
           <div className="alert alert-success shadow-sm" role="alert">
-            {message}
+            {props.message}
           </div>
         </div>
       </div>

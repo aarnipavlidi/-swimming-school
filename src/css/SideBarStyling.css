@@ -68,6 +68,7 @@
 
 @media (max-width: 991px) {
   .header-container {
+    position: fixed;
     padding: 0 15px;
   }
 
@@ -83,7 +84,7 @@
   }
 
   .header-nav {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: calc(100vh - 50px);
     background: var(--dashboard-color);

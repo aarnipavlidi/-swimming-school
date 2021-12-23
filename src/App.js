@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 // Components for Dashboard folder.
 import Dashboard from './components/Dashboard/Dashboard';
 import DashboardSideBar from './components/Dashboard/DashboardSideBar';
-import EditContent from './components/Dashboard/EditContent';
+import EditContent from './components/Dashboard/Content/EditContent';
 import Settings from './components/Dashboard/Settings';
 // Components for Header folder.
 import NavBar from './components/Header/NavBar';

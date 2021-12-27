@@ -45,7 +45,7 @@ const EditContent = ({ currentContent, notificationMessage, notificationStatus, 
   };
 
   return (
-    <div className="dashboard-container">
+    <div className="dashboard-container" style={collapseStatus ? { overflowY: 'hidden' } : { overflowY: 'auto' }}>
       <EditContact
       />
       <EditPrices
@@ -54,7 +54,6 @@ const EditContent = ({ currentContent, notificationMessage, notificationStatus, 
         setCurrentPrice={setCurrentPrice}
         notificationMessage={notificationMessage}
         notificationStatus={notificationStatus}
-        collapseStatus={collapseStatus}
         handlePriceChange={handlePriceChange}
         submitPricesDatabase={submitPricesDatabase}
         loadingUpdatePrice={loadingUpdatePrice}

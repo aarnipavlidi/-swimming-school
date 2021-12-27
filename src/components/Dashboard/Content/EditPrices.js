@@ -2,7 +2,7 @@ import React from 'react';
 import PriceButton from './../PriceButton';
 import Notification from '../../Notification';
 
-const EditPrices = ({ currentContent, currentPrice, setCurrentPrice, notificationMessage, notificationStatus, collapseStatus, handlePriceChange, submitPricesDatabase, loadingUpdatePrice }) => {
+const EditPrices = ({ currentContent, currentPrice, setCurrentPrice, notificationMessage, notificationStatus, handlePriceChange, submitPricesDatabase, loadingUpdatePrice }) => {
 
   // When using "input-group" class from Bootstrap, the "div" element is being
   // rendered too fast, when user is able to toggle the links visible and off.
@@ -40,7 +40,7 @@ const EditPrices = ({ currentContent, currentPrice, setCurrentPrice, notificatio
 
   return (
     <div className="container" style={{ backgroundColor: 'var(--optional-secondary-color)', flex: 1/3 }}>
-      <Notification message={notificationMessage} checkStatus={notificationStatus} collapseStatus={collapseStatus} />
+      <Notification message={notificationMessage} checkStatus={notificationStatus} />
       <div style={{ display: 'flex', marginTop: 10, justifyContent: 'center' }}>
         <p className="shadow rounded content-font" style={{ padding: 10, fontSize: 19, backgroundColor: 'var(--secondary-color)' }}>Hinnasto</p>
       </div>

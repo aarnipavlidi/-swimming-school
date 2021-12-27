@@ -12,10 +12,6 @@ const Notification = (props) => {
     backgroundColor: 'rgb(255,255,254)',
   };
 
-  if (props.collapseStatus === true) {
-    return null
-  }
-
   if (props.message !== null && props.checkStatus === false) {
     return (
       <div style={notificationPositioning} className="container">

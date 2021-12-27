@@ -76,18 +76,59 @@ const App = () => {
           <Route exact path="/pavmin/dashboard/editcontent">
             {currentToken && currentAdminData ?
               <>
-                <DashboardSideBar collapseStatus={collapseStatus} setCollapseStatus={setCollapseStatus} setCurrentToken={setCurrentToken} currentAdminData={currentAdminData} loading={loading} />
-                <EditContent currentContent={currentContent} notificationMessage={statusMessage} notificationStatus={status}  getNotification={getNotification} collapseStatus={collapseStatus} />
+                <DashboardSideBar
+                  collapseStatus={collapseStatus}
+                  setCollapseStatus={setCollapseStatus}
+                  setCurrentToken={setCurrentToken}
+                  getNotification={getNotification}
+                  currentAdminData={currentAdminData}
+                  loading={loading}
+                />
+                <EditContent
+                  currentContent={currentContent}
+                  notificationMessage={statusMessage}
+                  notificationStatus={status}
+                  getNotification={getNotification}
+                  collapseStatus={collapseStatus}
+                />
               </> :
-                <Redirect to="/pavmin"
-              />
+              <Redirect to="/pavmin" />
             }
           </Route>
           <Route exact path="/pavmin/dashboard/settings">
-            {currentToken && currentAdminData ? <><DashboardSideBar collapseStatus={collapseStatus} setCollapseStatus={setCollapseStatus} setCurrentToken={setCurrentToken} currentAdminData={currentAdminData} loading={loading} /><Settings /></> : <Redirect to="/pavmin" /> }
+            {currentToken && currentAdminData ?
+              <>
+                <DashboardSideBar
+                  collapseStatus={collapseStatus}
+                  setCollapseStatus={setCollapseStatus}
+                  setCurrentToken={setCurrentToken}
+                  getNotification={getNotification}
+                  currentAdminData={currentAdminData}
+                  loading={loading}
+                />
+                <Settings
+                />
+              </> :
+              <Redirect to="/pavmin" />
+            }
           </Route>
           <Route exact path="/pavmin/dashboard">
-            {currentToken && currentAdminData ? <><DashboardSideBar collapseStatus={collapseStatus} setCollapseStatus={setCollapseStatus} setCurrentToken={setCurrentToken} currentAdminData={currentAdminData} loading={loading} /><Dashboard currentAdminData={currentAdminData} /></> : <Redirect to="/pavmin" /> }
+            {currentToken && currentAdminData ?
+              <>
+                <DashboardSideBar
+                  collapseStatus={collapseStatus}
+                  setCollapseStatus={setCollapseStatus}
+                  setCurrentToken={setCurrentToken}
+                  getNotification={getNotification}
+                  currentAdminData={currentAdminData}
+                  loading={loading}
+                />
+                <Dashboard
+                  currentAdminData={currentAdminData}
+                />
+              </> :
+              <Redirect to="/pavmin" />
+            }
           </Route>
           <Route exact path="/pavmin">
             {currentToken && currentAdminData ? <Redirect to="/pavmin/dashboard" /> : <Login setCurrentToken={setCurrentToken} loading={loading} />}

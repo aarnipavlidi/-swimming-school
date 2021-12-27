@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useApolloClient } from '@apollo/client';
 import '../../css/SideBarStyling.css';
 
-const DashboardSideBar = ({ collapseStatus, setCollapseStatus, setCurrentToken, currentAdminData, loading }) => {
+const DashboardSideBar = ({ collapseStatus, setCollapseStatus, setCurrentToken, getNotification, currentAdminData, loading }) => {
 
   const client = useApolloClient();
   const [showLinksBottom, setShowLinksBottom] = useState(false);
@@ -33,6 +33,10 @@ const DashboardSideBar = ({ collapseStatus, setCollapseStatus, setCurrentToken, 
   // equal to the transition itself. Will look into this later! :)
   const showToggleContent = (option) => {
     if (option === 'toggle' && collapseStatus === false) {
+      getNotification({
+        message: null,
+        status: null
+      })
       setShowLinksBottom(true)
       setCollapseStatus(true)
     };

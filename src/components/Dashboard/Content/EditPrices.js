@@ -51,11 +51,11 @@ const EditPrices = ({ currentContent, currentPrice, setCurrentPrice, notificatio
               <label style={{ display: 'flex', alignItems: 'center', height: '100%' }} for="oneTimeSoloSlider" className="form-label content-font">1x45min (1 hkl.)</label>
             </div>
             <div style={priceStyling.container}>
-              <span className="input-group-text" style={priceStyling.value}>{!currentPrice.oneTimeSolo ? currentContent.PricingData.pricing.OneTimeSolo : currentPrice.oneTimeSolo}</span>
+              <span className="input-group-text" style={priceStyling.value}>{!currentPrice.oneTimeSolo ? currentContent.PricingData?.pricing.OneTimeSolo : currentPrice.oneTimeSolo}</span>
               <span className="input-group-text" style={priceStyling.icon}><i className="fas fa-euro-sign"></i></span>
             </div>
           </div>
-          <input name="oneTimeSolo" onChange={handlePriceChange} value={!currentPrice.oneTimeSolo ? currentContent.PricingData.pricing.OneTimeSolo : currentPrice.oneTimeSolo} type="range" min="0" max="250" step="1" className="form-range" id="oneTimeSoloSlider" />
+          <input name="oneTimeSolo" onChange={handlePriceChange} value={!currentPrice.oneTimeSolo ? currentContent.PricingData?.pricing.OneTimeSolo : currentPrice.oneTimeSolo} type="range" min="0" max="250" step="1" className="form-range" id="oneTimeSoloSlider" />
         </div>
         <div className="col-12 col-md-6">
           <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -63,11 +63,11 @@ const EditPrices = ({ currentContent, currentPrice, setCurrentPrice, notificatio
               <label style={{ display: 'flex', alignItems: 'center', height: '100%' }} for="oneTimeDuoSlider" className="form-label content-font">1x45min (2 hkl.)</label>
             </div>
             <div style={priceStyling.container}>
-              <span className="input-group-text" style={priceStyling.value}>{!currentPrice.oneTimeDuo ? currentContent.PricingData.pricing.OneTimeDuo : currentPrice.oneTimeDuo}</span>
+              <span className="input-group-text" style={priceStyling.value}>{!currentPrice.oneTimeDuo ? currentContent.PricingData?.pricing.OneTimeDuo : currentPrice.oneTimeDuo}</span>
               <span className="input-group-text" style={priceStyling.icon}><i className="fas fa-euro-sign"></i></span>
             </div>
           </div>
-          <input name="oneTimeDuo" onChange={handlePriceChange} value={!currentPrice.oneTimeDuo ? currentContent.PricingData.pricing.OneTimeDuo : currentPrice.oneTimeDuo} type="range" min="0" max="250" step="1" className="form-range" id="oneTimeDuoSlider" />
+          <input name="oneTimeDuo" onChange={handlePriceChange} value={!currentPrice.oneTimeDuo ? currentContent.PricingData?.pricing.OneTimeDuo : currentPrice.oneTimeDuo} type="range" min="0" max="250" step="1" className="form-range" id="oneTimeDuoSlider" />
         </div>
         <div className="col-12 col-md-6">
           <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -75,11 +75,11 @@ const EditPrices = ({ currentContent, currentPrice, setCurrentPrice, notificatio
               <label style={{ display: 'flex', alignItems: 'center', height: '100%' }} for="threeTimeSoloSlider" className="form-label content-font">3x45min (1 hkl.)</label>
             </div>
             <div style={priceStyling.container}>
-              <span className="input-group-text" style={priceStyling.value}>{!currentPrice.threeTimeSolo ? currentContent.PricingData.pricing.ThreeTimeSolo : currentPrice.threeTimeSolo}</span>
+              <span className="input-group-text" style={priceStyling.value}>{!currentPrice.threeTimeSolo ? currentContent.PricingData?.pricing.ThreeTimeSolo : currentPrice.threeTimeSolo}</span>
               <span className="input-group-text" style={priceStyling.icon}><i className="fas fa-euro-sign"></i></span>
             </div>
           </div>
-          <input name="threeTimeSolo" onChange={handlePriceChange} value={!currentPrice.threeTimeSolo ? currentContent.PricingData.pricing.ThreeTimeSolo : currentPrice.threeTimeSolo} type="range" min="0" max="250" step="1" className="form-range" id="threeTimeSoloSlider" />
+          <input name="threeTimeSolo" onChange={handlePriceChange} value={!currentPrice.threeTimeSolo ? currentContent.PricingData?.pricing.ThreeTimeSolo : currentPrice.threeTimeSolo} type="range" min="0" max="250" step="1" className="form-range" id="threeTimeSoloSlider" />
         </div>
         <div className="col-12 col-md-6">
           <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -87,11 +87,11 @@ const EditPrices = ({ currentContent, currentPrice, setCurrentPrice, notificatio
               <label style={{ display: 'flex', alignItems: 'center', height: '100%' }} for="threeTimeDuoSlider" className="form-label content-font">3x45min (2 hkl.)</label>
             </div>
             <div style={priceStyling.container}>
-              <span className="input-group-text" style={priceStyling.value}>{!currentPrice.threeTimeDuo ? currentContent.PricingData.pricing.ThreeTimeDuo : currentPrice.threeTimeDuo}</span>
+              <span className="input-group-text" style={priceStyling.value}>{!currentPrice.threeTimeDuo ? currentContent.PricingData?.pricing.ThreeTimeDuo : currentPrice.threeTimeDuo}</span>
               <span className="input-group-text" style={priceStyling.icon}><i className="fas fa-euro-sign"></i></span>
             </div>
           </div>
-          <input name="threeTimeDuo" onChange={handlePriceChange} value={!currentPrice.threeTimeDuo ? currentContent.PricingData.pricing.ThreeTimeDuo : currentPrice.threeTimeDuo} type="range" min="0" max="250" step="1" className="form-range" id="threeTimeDuoSlider" />
+          <input name="threeTimeDuo" onChange={handlePriceChange} value={!currentPrice.threeTimeDuo ? currentContent.PricingData?.pricing.ThreeTimeDuo : currentPrice.threeTimeDuo} type="range" min="0" max="250" step="1" className="form-range" id="threeTimeDuoSlider" />
         </div>
         <div className="col-12 col-md-6">
           <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -99,11 +99,11 @@ const EditPrices = ({ currentContent, currentPrice, setCurrentPrice, notificatio
               <label style={{ display: 'flex', alignItems: 'center', height: '100%' }} for="fiveTimeSoloSlider" className="form-label content-font">5x45min (1 hkl.)</label>
             </div>
             <div style={priceStyling.container}>
-              <span className="input-group-text" style={priceStyling.value}>{!currentPrice.fiveTimeSolo ? currentContent.PricingData.pricing.FiveTimeSolo : currentPrice.fiveTimeSolo}</span>
+              <span className="input-group-text" style={priceStyling.value}>{!currentPrice.fiveTimeSolo ? currentContent.PricingData?.pricing.FiveTimeSolo : currentPrice.fiveTimeSolo}</span>
               <span className="input-group-text" style={priceStyling.icon}><i className="fas fa-euro-sign"></i></span>
             </div>
           </div>
-          <input name="fiveTimeSolo" onChange={handlePriceChange} value={!currentPrice.fiveTimeSolo ? currentContent.PricingData.pricing.FiveTimeSolo : currentPrice.fiveTimeSolo} type="range" min="0" max="250" step="1" className="form-range" id="fiveTimeSoloSlider" />
+          <input name="fiveTimeSolo" onChange={handlePriceChange} value={!currentPrice.fiveTimeSolo ? currentContent.PricingData?.pricing.FiveTimeSolo : currentPrice.fiveTimeSolo} type="range" min="0" max="250" step="1" className="form-range" id="fiveTimeSoloSlider" />
         </div>
         <div className="col-12 col-md-6">
           <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -111,11 +111,11 @@ const EditPrices = ({ currentContent, currentPrice, setCurrentPrice, notificatio
               <label style={{ display: 'flex', alignItems: 'center', height: '100%' }} for="fiveTimeDuoSlider" className="form-label content-font">5x45min (2 hkl.)</label>
             </div>
             <div style={priceStyling.container}>
-              <span className="input-group-text" style={priceStyling.value}>{!currentPrice.fiveTimeDuo ? currentContent.PricingData.pricing.FiveTimeDuo : currentPrice.fiveTimeDuo}</span>
+              <span className="input-group-text" style={priceStyling.value}>{!currentPrice.fiveTimeDuo ? currentContent.PricingData?.pricing.FiveTimeDuo : currentPrice.fiveTimeDuo}</span>
               <span className="input-group-text" style={priceStyling.icon}><i className="fas fa-euro-sign"></i></span>
             </div>
           </div>
-          <input name="fiveTimeDuo" onChange={handlePriceChange} value={!currentPrice.fiveTimeDuo ? currentContent.PricingData.pricing.FiveTimeDuo : currentPrice.fiveTimeDuo} type="range" min="0" max="250" step="1" className="form-range" id="fiveTimeDuoSlider" />
+          <input name="fiveTimeDuo" onChange={handlePriceChange} value={!currentPrice.fiveTimeDuo ? currentContent.PricingData?.pricing.FiveTimeDuo : currentPrice.fiveTimeDuo} type="range" min="0" max="250" step="1" className="form-range" id="fiveTimeDuoSlider" />
         </div>
       </div>
       <PriceButton setCurrentPrice={setCurrentPrice} submitPricesDatabase={submitPricesDatabase} loadingUpdatePrice={loadingUpdatePrice} />

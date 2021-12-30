@@ -6,6 +6,8 @@ import { setContext } from 'apollo-link-context'
 import App from './App'
 import './index.css'
 
+const config = require('./utils/config');
+
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('current-admin-token')
 
@@ -18,8 +20,8 @@ const authLink = setContext((_, { headers }) => {
 })
 
 const database = new HttpLink({
-  uri: 'http://localhost:4000'
-})
+  uri: config.DATABASE_URL,
+});
 
 const client = new ApolloClient({
   connectToDevTools: true,

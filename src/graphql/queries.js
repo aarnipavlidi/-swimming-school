@@ -28,6 +28,10 @@ export const CURRENT_CONTENT = gql`
         FiveTimeSolo
         FiveTimeDuo
       }
+      content {
+        primaryElement
+        secondaryElement
+      }
     }
   }
 `

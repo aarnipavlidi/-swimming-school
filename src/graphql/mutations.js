@@ -29,3 +29,17 @@ export const UPDATE_PRICING = gql`
     }
   }
 `
+
+export const UPDATE_CONTENT = gql`
+  mutation getContentValues(
+    $getElementData: String!,
+    $getElementValueData: [String!]
+  ) {
+    updateContent(
+      getElement: $getElementData,
+      getElementValue: $getElementValueData
+    ) {
+      response
+    }
+  }
+`

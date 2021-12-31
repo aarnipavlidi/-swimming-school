@@ -36,13 +36,14 @@ const Pricing = ({ currentContent, loadingContent }) => {
           <hr className="custom-horizontal-line" />
           <div className="row">
             <div className="col-md text-start">
-              <p className="content-font">Yhden (1) yksityistunnin kesto on oletuksena 45 minuuttia kerrallaan. Opetuspaikkana toimii Oulun uimahalli.</p>
-              <p className="content-font">Tunnit laskutetaan asiakkaalta jälkikäteen sähköpostitse lähettävällä laskulla. Hintaan sisältyy opetus ja uimarin vakuutus uinnin ajaksi.</p>
-              <p className="content-font">Hintaan ei sisälly uimahallin sisäänpääsymaksu, vaan se maksetaan normaaliin tapaan uimahallin kassalla.</p>
+              {currentContent.PricingData?.content.primaryElement.map(result => {
+                return <p className="content-font">{result}</p>
+              })}
             </div>
             <div className="col-md text-start">
-              <p className="content-font">Mikäli tulee esteitä, niin yksityistunnin voi perua veloituksetta viimeistään kaksi (2) vuorokautta ennen sovitun tunnin alkua. Muussa tapauksessa veloitamme tunnista täyden hinnan.</p>
-              <p className="content-font">Uimakoulu Oy pidättää oikeuden perua tunnin esim. ohjaajan sairastuessa.</p>
+              {currentContent.PricingData?.content.secondaryElement.map(result => {
+                return <p className="content-font">{result}</p>
+              })}
             </div>
           </div>
         </div>

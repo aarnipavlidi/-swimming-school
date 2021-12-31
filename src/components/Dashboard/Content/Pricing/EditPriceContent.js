@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EditPriceContent = ({ currentContent, currentElementContent, resetPriceContentElement, handlePriceContentChange, submitPriceContent, ...props }) => {
+const EditPriceContent = ({ handleModalChange, currentContent, currentElementContent, resetPriceContentElement, handlePriceContentChange, ...props }) => {
 
   const contentStyling = {
     container: {
@@ -66,7 +66,7 @@ const EditPriceContent = ({ currentContent, currentElementContent, resetPriceCon
               <div>
                 <i className="fas fa-edit"></i>
               </div> :
-              <div onClick={() => submitPriceContent(props.elementValue)}>
+              <div onClick={() => handleModalChange(props.elementValue)} data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 <i className="fas fa-share-square"></i>
               </div>
             }
@@ -108,7 +108,7 @@ const EditPriceContent = ({ currentContent, currentElementContent, resetPriceCon
               <div>
                 <i className="fas fa-edit"></i>
               </div> :
-              <div onClick={() => submitPriceContent(props.elementValue)}>
+              <div onClick={() => handleModalChange(props.elementValue)} data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 <i className="fas fa-share-square"></i>
               </div>
             }

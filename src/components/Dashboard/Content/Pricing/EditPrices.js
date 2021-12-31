@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import ConfirmModal from './Modal/ConfirmModal';
 import EditPriceContent from './EditPriceContent';
+import PriceButton from './PriceButton';
 import PriceSlider from './PriceSlider';
 
-import PriceButton from './../../PriceButton';
 import Notification from '../../../Notification';
 
 const EditPrices = ({ currentContent, notificationMessage, notificationStatus, getNotification, updateCurrentPrices, loadingUpdatePrice, updateCurrentContent, loadingUpdateContent }) => {
@@ -12,6 +13,11 @@ const EditPrices = ({ currentContent, notificationMessage, notificationStatus, g
   // presses the toggle again, it appears too fast and need to fix this.
   // As of right now the notification lasts for 5 seconds, been defined
   // at "App" component with "getNotification" function.
+
+  const [currentModal, setCurrentModal] = useState(null);
+  const handleModalChange = (getValue) => {
+    setCurrentModal(getValue)
+  };
 
   const [currentPrice, setCurrentPrice] = useState({
     oneTimeSolo: null,
@@ -93,29 +99,24 @@ const EditPrices = ({ currentContent, notificationMessage, notificationStatus, g
       <div style={{ display: 'flex', marginTop: 10, justifyContent: 'center' }}>
         <p className="shadow rounded content-font" style={{ padding: 10, fontSize: 19, backgroundColor: 'var(--secondary-color)' }}>Hinnasto</p>
       </div>
-
-
       <div className="row" style={{ marginTop: 10 }}>
         <EditPriceContent
+          handleModalChange={handleModalChange}
           currentContent={currentContent}
           currentElementContent={currentElementContent.primaryElement}
           resetPriceContentElement={resetPriceContentElement}
           handlePriceContentChange={handlePriceContentChange}
-          submitPriceContent={submitPriceContent}
           elementValue="primaryElement"
         />
         <EditPriceContent
+          handleModalChange={handleModalChange}
           currentContent={currentContent}
           currentElementContent={currentElementContent.secondaryElement}
           resetPriceContentElement={resetPriceContentElement}
           handlePriceContentChange={handlePriceContentChange}
-          submitPriceContent={submitPriceContent}
           elementValue="secondaryElement"
         />
       </div>
-
-
-
       <div className="row" style={{ marginTop: 25 }}>
         <PriceSlider
           currentPrice={currentPrice}
@@ -172,7 +173,8 @@ const EditPrices = ({ currentContent, notificationMessage, notificationStatus, g
           sliderInputValue="FiveTimeDuo"
         />
       </div>
-      <PriceButton setCurrentPrice={setCurrentPrice} submitPricesDatabase={submitPricesDatabase} loadingUpdatePrice={loadingUpdatePrice} />
+      <PriceButton setCurrentPrice={setCurrentPrice} handleModalChange={handleModalChange} loadingUpdatePrice={loadingUpdatePrice} />
+      <ConfirmModal submitPricesDatabase={submitPricesDatabase} submitPriceContent={submitPriceContent} value={currentModal} />
     </div>
   );
 };

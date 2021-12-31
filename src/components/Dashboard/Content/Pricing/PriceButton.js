@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PriceButton = ({ setCurrentPrice, submitPricesDatabase, loadingUpdatePrice }) => {
+const PriceButton = ({ setCurrentPrice, handleModalChange, loadingUpdatePrice }) => {
 
   const buttonStyling = {
     container: {
@@ -23,6 +23,7 @@ const PriceButton = ({ setCurrentPrice, submitPricesDatabase, loadingUpdatePrice
   };
 
   const resetPrices = () => {
+    handleModalChange(null); 
     setCurrentPrice({
       oneTimeSolo: null,
       oneTimeDuo: null,
@@ -61,7 +62,7 @@ const PriceButton = ({ setCurrentPrice, submitPricesDatabase, loadingUpdatePrice
         </button>
       </div>
       <div className="shadow" style={buttonStyling.button}>
-        <button onClick={submitPricesDatabase} type="submit" className="btn content-font" style={buttonStyling.content}>
+        <button onClick={() => handleModalChange("editPricing")} type="submit" className="btn content-font" style={buttonStyling.content} data-bs-toggle="modal" data-bs-target="#staticBackdrop">
           <span><i className="fas fa-edit"></i></span>
           <span>Muokkaa</span>
         </button>

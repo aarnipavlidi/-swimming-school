@@ -66,7 +66,7 @@ const EditPriceContent = ({ handleModalChange, currentContent, currentElementCon
               <div>
                 <i className="fas fa-edit"></i>
               </div> :
-              <div onClick={() => handleModalChange(props.elementValue)} data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              <div onClick={() => handleModalChange(props.elementValue)} data-bs-toggle="modal" data-bs-target="#targetPricingModal">
                 <i className="fas fa-share-square"></i>
               </div>
             }
@@ -108,7 +108,7 @@ const EditPriceContent = ({ handleModalChange, currentContent, currentElementCon
               <div>
                 <i className="fas fa-edit"></i>
               </div> :
-              <div onClick={() => handleModalChange(props.elementValue)} data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              <div onClick={() => handleModalChange(props.elementValue)} data-bs-toggle="modal" data-bs-target="#targetPricingModal">
                 <i className="fas fa-share-square"></i>
               </div>
             }

@@ -10,21 +10,19 @@ const useUpdateContent = () => {
     }],
   });
 
-  const updateCurrentContent = async ({ elementData, elementValueData }) => {
+  const updateCurrentContent = async ({ sourceData, elementData, elementValueData }) => {
 
     try {
       const response = await getContentValues({
         variables: {
+          getSourceData: sourceData,
           getElementData: elementData,
           getElementValueData: elementValueData
         },
       });
 
-      console.log(response)
-
       return response.data;
     } catch (error) {
-      console.log(error.message)
       return error
     }
   };

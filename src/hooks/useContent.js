@@ -6,13 +6,15 @@ const useContent = () => {
 
   const { loading, error, data } = useQuery(CURRENT_CONTENT);
   const [currentContent, setCurrentContent] = useState({
-    PricingData: null
+    PricingData: null,
+    HomeData: null
   });
 
   useEffect(() => {
     if (data) {
       setCurrentContent({
-        PricingData: data.showCurrentContent.find(results => results.value === "Pricing")
+        PricingData: data.showCurrentContent.find(results => results.value === "Pricing"),
+        HomeData: data.showCurrentContent.find(results => results.value === "Home"),
       });
     };
   }, [data]);

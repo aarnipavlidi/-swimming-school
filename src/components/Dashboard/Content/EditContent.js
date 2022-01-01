@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
+import EditFooter from './Footer/EditFooter';
+import EditHome from './Home/EditHome';
 import EditPrices from './Pricing/EditPrices';
+
+import Notification from '../../Notification';
 
 import '../../../css/Dashboard.css';
 import useUpdateContent from '../../../hooks/useUpdateContent';
@@ -12,13 +16,24 @@ const EditContent = ({ currentContent, notificationMessage, notificationStatus, 
 
   return (
     <div className="dashboard-container" style={collapseStatus ? { overflowY: 'hidden' } : { overflowY: 'auto' }}>
+      <Notification message={notificationMessage} checkStatus={notificationStatus} />
+      <EditHome
+        currentContent={currentContent}
+        getNotification={getNotification}
+        updateCurrentContent={updateCurrentContent}
+        loadingUpdateContent={loadingUpdateContent}
+      />
       <EditPrices
         currentContent={currentContent}
-        notificationMessage={notificationMessage}
-        notificationStatus={notificationStatus}
         getNotification={getNotification}
         updateCurrentPrices={updateCurrentPrices}
         loadingUpdatePrice={loadingUpdatePrice}
+        updateCurrentContent={updateCurrentContent}
+        loadingUpdateContent={loadingUpdateContent}
+      />
+      <EditFooter
+        currentContent={currentContent}
+        getNotification={getNotification}
         updateCurrentContent={updateCurrentContent}
         loadingUpdateContent={loadingUpdateContent}
       />

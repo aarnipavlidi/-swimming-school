@@ -23,7 +23,7 @@ const PriceButton = ({ setCurrentPrice, handleModalChange, loadingUpdatePrice })
   };
 
   const resetPrices = () => {
-    handleModalChange(null); 
+    handleModalChange(null);
     setCurrentPrice({
       oneTimeSolo: null,
       oneTimeDuo: null,
@@ -62,7 +62,7 @@ const PriceButton = ({ setCurrentPrice, handleModalChange, loadingUpdatePrice })
         </button>
       </div>
       <div className="shadow" style={buttonStyling.button}>
-        <button onClick={() => handleModalChange("editPricing")} type="submit" className="btn content-font" style={buttonStyling.content} data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        <button onClick={() => handleModalChange("editPricing")} type="submit" className="btn content-font" style={buttonStyling.content} data-bs-toggle="modal" data-bs-target="#targetPricingModal">
           <span><i className="fas fa-edit"></i></span>
           <span>Muokkaa</span>
         </button>

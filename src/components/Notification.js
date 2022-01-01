@@ -15,8 +15,8 @@ const Notification = (props) => {
   if (props.message !== null && props.checkStatus === false) {
     return (
       <div style={notificationPositioning} className="container">
-        <div style={notificationStyling} className="container">
-          <div className="alert alert-danger shadow-sm" role="alert">
+        <div style={notificationStyling}>
+          <div className="alert alert-success shadow-sm" role="alert">
             {props.message}
           </div>
         </div>
@@ -27,7 +27,7 @@ const Notification = (props) => {
   if (props.message !== null && props.checkStatus === true) {
     return (
       <div style={notificationPositioning} className="container">
-        <div style={notificationStyling} className="container">
+        <div style={notificationStyling}>
           <div className="alert alert-success shadow-sm" role="alert">
             {props.message}
           </div>

@@ -32,10 +32,12 @@ export const UPDATE_PRICING = gql`
 
 export const UPDATE_CONTENT = gql`
   mutation getContentValues(
+    $getSourceData: String!
     $getElementData: String!,
     $getElementValueData: [String!]
   ) {
     updateContent(
+      getSource: $getSourceData,
       getElement: $getElementData,
       getElementValue: $getElementValueData
     ) {

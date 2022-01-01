@@ -4,15 +4,26 @@ import EditPriceContent from './EditPriceContent';
 import PriceButton from './PriceButton';
 import PriceSlider from './PriceSlider';
 
-import Notification from '../../../Notification';
-
-const EditPrices = ({ currentContent, notificationMessage, notificationStatus, getNotification, updateCurrentPrices, loadingUpdatePrice, updateCurrentContent, loadingUpdateContent }) => {
+const EditPrices = ({ currentContent, getNotification, updateCurrentPrices, loadingUpdatePrice, updateCurrentContent, loadingUpdateContent }) => {
 
   // TODO: Look into "Notification" component, when user updates prices
   // and clicks the "toggle" button, it goes away smoothly, but if user
   // presses the toggle again, it appears too fast and need to fix this.
   // As of right now the notification lasts for 5 seconds, been defined
   // at "App" component with "getNotification" function.
+
+  const elementStyling = {
+    titleContainer: {
+      display: 'flex',
+      marginTop: 10,
+      justifyContent: 'center',
+    },
+    titleContent: {
+      padding: 10,
+      fontSize: 19,
+      backgroundColor: 'var(--secondary-color)',
+    },
+  };
 
   const [currentModal, setCurrentModal] = useState(null);
   const handleModalChange = (getValue) => {
@@ -45,12 +56,12 @@ const EditPrices = ({ currentContent, notificationMessage, notificationStatus, g
       const response = await updateCurrentPrices({ oneTimeSolo, oneTimeDuo, threeTimeSolo, threeTimeDuo, fiveTimeSolo, fiveTimeDuo });
       getNotification({
         message: response.updatePricing.response,
-        status: true
+        status: true,
       });
     } catch (error) {
       getNotification({
         message: error.message,
-        status: false
+        status: false,
       })
     };
   };
@@ -69,35 +80,35 @@ const EditPrices = ({ currentContent, notificationMessage, notificationStatus, g
     setCurrentElementContent({...currentElementContent, [getElementValue]: null})
   };
 
-  const submitPriceContent = async (getElementValue) => {
+  const submitPriceContent = async (getSourceValue, getElementValue) => {
 
     const getElementData = [...currentElementContent[getElementValue]];
     const formatElementData = getElementData[0].split(/[\n]+/);
     const filterElementData = formatElementData.filter(results => results);
 
+    const sourceData = getSourceValue;
     const elementData = getElementValue;
     const elementValueData = filterElementData;
 
     try {
-      const response = await updateCurrentContent({ elementData, elementValueData });
+      const response = await updateCurrentContent({ sourceData, elementData, elementValueData });
       getNotification({
         message: response.updateContent.response,
-        status: true
+        status: true,
       });
       setCurrentElementContent({...currentElementContent, [getElementValue]: null});
     } catch (error) {
       getNotification({
         message: error.message,
-        status: false
+        status: false,
       })
     };
   };
 
   return (
     <div className="container" style={{ backgroundColor: 'var(--optional-secondary-color)', flex: 1/3 }}>
-      <Notification message={notificationMessage} checkStatus={notificationStatus} />
-      <div style={{ display: 'flex', marginTop: 10, justifyContent: 'center' }}>
-        <p className="shadow rounded content-font" style={{ padding: 10, fontSize: 19, backgroundColor: 'var(--secondary-color)' }}>Hinnasto</p>
+      <div style={elementStyling.titleContainer}>
+        <p className="shadow rounded content-font" style={elementStyling.titleContent}>Hinnasto</p>
       </div>
       <div className="row" style={{ marginTop: 10 }}>
         <EditPriceContent
@@ -174,7 +185,7 @@ const EditPrices = ({ currentContent, notificationMessage, notificationStatus, g
         />
       </div>
       <PriceButton setCurrentPrice={setCurrentPrice} handleModalChange={handleModalChange} loadingUpdatePrice={loadingUpdatePrice} />
-      <ConfirmModal submitPricesDatabase={submitPricesDatabase} submitPriceContent={submitPriceContent} value={currentModal} />
+      <ConfirmModal submitPricesDatabase={submitPricesDatabase} submitPriceContent={submitPriceContent} value={currentModal} valueTarget="Pricing" />
     </div>
   );
 };

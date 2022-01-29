@@ -58,7 +58,7 @@ const App = () => {
           <Route exact path="/">
             <NavBar currentToken={currentToken} currentAdminData={currentAdminData} />
             <Notification message={statusMessage} checkStatus={status} />
-            <Home loadingContent={loadingContent} />
+            <Home currentContent={currentContent} loadingContent={loadingContent} />
             <Footer loadingContent={loadingContent} />
           </Route>
           <Route path="/hinnasto">

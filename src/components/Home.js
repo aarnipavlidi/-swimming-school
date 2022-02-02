@@ -25,7 +25,7 @@ const Home = ({ currentContent, loadingContent }) => {
             width="400"
             height="300"
             className="embed-responsive-item"
-            allowfullscreen=""
+            allowfullscreen
             loading="lazy"
           />
         </div>

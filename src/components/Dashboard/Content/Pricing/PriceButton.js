@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PriceButton = ({ setCurrentPrice, handleModalChange, loadingUpdatePrice }) => {
+const PriceButton = ({ checkPricesStatus, setCurrentPrice, handleModalChange, loadingUpdatePrice }) => {
 
   const buttonStyling = {
     container: {
@@ -53,6 +53,25 @@ const PriceButton = ({ setCurrentPrice, handleModalChange, loadingUpdatePrice })
     );
   };
 
+  if (checkPricesStatus) {
+    return (
+      <div className="container" style={buttonStyling.container}>
+        <div className="shadow" style={buttonStyling.button}>
+          <button onClick={resetPrices} type="submit" className="btn content-font" style={buttonStyling.content}>
+            <span><i className="fas fa-undo"></i></span>
+            <span>Palauta</span>
+          </button>
+        </div>
+        <div className="shadow" style={buttonStyling.button}>
+          <button onClick={() => handleModalChange("editPricing")} type="submit" className="btn content-font" style={buttonStyling.content} data-bs-toggle="modal" data-bs-target="#targetPricingModal" disabled>
+            <span><i className="fas fa-edit"></i></span>
+            <span>Muokkaa</span>
+          </button>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="container" style={buttonStyling.container}>
       <div className="shadow" style={buttonStyling.button}>
@@ -69,6 +88,8 @@ const PriceButton = ({ setCurrentPrice, handleModalChange, loadingUpdatePrice })
       </div>
     </div>
   );
+
+
 };
 
 export default PriceButton;

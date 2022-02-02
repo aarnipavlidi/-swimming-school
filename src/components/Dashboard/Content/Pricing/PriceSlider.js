@@ -30,6 +30,8 @@ const PriceSlider = ({ currentPrice, currentContent, handlePriceChange, ...props
     },
   };
 
+  const defaultPriceValue = currentContent.PricingData?.pricing[props.sliderInputValue] ? currentContent.PricingData?.pricing[props.sliderInputValue] : 0;
+
   return (
     <div className="col-12 col-md-6">
       <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -37,11 +39,11 @@ const PriceSlider = ({ currentPrice, currentContent, handlePriceChange, ...props
           <label style={{ display: 'flex', alignItems: 'center', height: '100%' }} for={props.sliderID} className="form-label content-font">{props.sliderTitle}</label>
         </div>
         <div style={priceStyling.container}>
-          <span className="input-group-text" style={priceStyling.value}>{!currentPrice[props.sliderInputName] ? currentContent.PricingData?.pricing[props.sliderInputValue] : currentPrice[props.sliderInputName]}</span>
+          <span className="input-group-text" style={priceStyling.value}>{!currentPrice[props.sliderInputName] ? defaultPriceValue : currentPrice[props.sliderInputName]}</span>
           <span className="input-group-text" style={priceStyling.icon}><i className="fas fa-euro-sign"></i></span>
         </div>
       </div>
-      <input name={props.sliderInputName} onChange={handlePriceChange} value={!currentPrice[props.sliderInputName] ? currentContent.PricingData?.pricing[props.sliderInputValue] : currentPrice[props.sliderInputName]} type="range" min="0" max="250" step="1" className="form-range" id={props.sliderID} />
+      <input name={props.sliderInputName} onChange={handlePriceChange} value={!currentPrice[props.sliderInputName] ? defaultPriceValue : currentPrice[props.sliderInputName]} type="range" min="0" max="250" step="1" className="form-range" id={props.sliderID} />
     </div>
   );
 };

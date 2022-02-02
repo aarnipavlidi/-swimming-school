@@ -39,18 +39,28 @@ const EditPrices = ({ currentContent, getNotification, updateCurrentPrices, load
     fiveTimeDuo: null
   });
 
+  const checkPricesStatus = Object.values(currentPrice).every(getValue => {
+    
+    if (getValue === null) {
+      return true;
+    }
+
+    return false;
+  });
+
   const handlePriceChange = (event) => {
     event.preventDefault();
     setCurrentPrice({ ...currentPrice, [event.target.name]: event.target.value })
   };
 
   const submitPricesDatabase = async () => {
-    const oneTimeSolo = currentPrice.oneTimeSolo ? currentPrice.oneTimeSolo : currentContent.PricingData.pricing.OneTimeSolo;
-    const oneTimeDuo = currentPrice.oneTimeDuo ? currentPrice.oneTimeDuo : currentContent.PricingData.pricing.OneTimeDuo;
-    const threeTimeSolo = currentPrice.threeTimeSolo ? currentPrice.threeTimeSolo : currentContent.PricingData.pricing.ThreeTimeSolo;
-    const threeTimeDuo = currentPrice.threeTimeDuo ? currentPrice.threeTimeDuo : currentContent.PricingData.pricing.ThreeTimeDuo;
-    const fiveTimeSolo = currentPrice.fiveTimeSolo ? currentPrice.fiveTimeSolo : currentContent.PricingData.pricing.FiveTimeSolo;
-    const fiveTimeDuo = currentPrice.fiveTimeDuo ? currentPrice.fiveTimeDuo : currentContent.PricingData.pricing.FiveTimeDuo;
+
+    const oneTimeSolo = currentPrice.oneTimeSolo ? currentPrice.oneTimeSolo : !currentContent.PricingData?.pricing.OneTimeSolo ? 0 : currentContent.PricingData.pricing.OneTimeSolo;
+    const oneTimeDuo = currentPrice.oneTimeDuo ? currentPrice.oneTimeDuo : !currentContent.PricingData?.pricing.OneTimeDuo ? 0 : currentContent.PricingData.pricing.OneTimeDuo;
+    const threeTimeSolo = currentPrice.threeTimeSolo ? currentPrice.threeTimeSolo : !currentContent.PricingData?.pricing.ThreeTimeSolo ? 0 : currentContent.PricingData.pricing.ThreeTimeSolo;
+    const threeTimeDuo = currentPrice.threeTimeDuo ? currentPrice.threeTimeDuo : !currentContent.PricingData?.pricing.ThreeTimeDuo ? 0 : currentContent.PricingData.pricing.ThreeTimeDuo;
+    const fiveTimeSolo = currentPrice.fiveTimeSolo ? currentPrice.fiveTimeSolo : !currentContent.PricingData?.pricing.FiveTimeSolo ? 0 : currentContent.PricingData.pricing.FiveTimeSolo;
+    const fiveTimeDuo = currentPrice.fiveTimeDuo ? currentPrice.fiveTimeDuo : !currentContent.PricingData?.pricing.FiveTimeDuo ? 0 : currentContent.PricingData.pricing.FiveTimeDuo;
 
     try {
       const response = await updateCurrentPrices({ oneTimeSolo, oneTimeDuo, threeTimeSolo, threeTimeDuo, fiveTimeSolo, fiveTimeDuo });
@@ -184,7 +194,7 @@ const EditPrices = ({ currentContent, getNotification, updateCurrentPrices, load
           sliderInputValue="FiveTimeDuo"
         />
       </div>
-      <PriceButton setCurrentPrice={setCurrentPrice} handleModalChange={handleModalChange} loadingUpdatePrice={loadingUpdatePrice} />
+      <PriceButton checkPricesStatus={checkPricesStatus} setCurrentPrice={setCurrentPrice} handleModalChange={handleModalChange} loadingUpdatePrice={loadingUpdatePrice} />
       <ConfirmModal submitPricesDatabase={submitPricesDatabase} submitPriceContent={submitPriceContent} value={currentModal} valueTarget="Pricing" />
     </div>
   );

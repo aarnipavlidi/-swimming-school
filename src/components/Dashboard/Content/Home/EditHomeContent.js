@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EditHomeContent = ({ handleModalChange, currentContent, currentElementContent, resetPriceContentElement, handlePriceContentChange, ...props }) => {
+const EditHomeContent = ({ handleModalChange, currentContent, currentElementContent, resetHomeContentElement, handleHomeContentChange, ...props }) => {
 
   const contentStyling = {
     container: {
@@ -31,13 +31,13 @@ const EditHomeContent = ({ handleModalChange, currentContent, currentElementCont
   };
 
   const getElementData = currentContent.HomeData?.content[props.elementValue];
-  const formatElementData = getElementData.join('\n\n');
+  const formatElementData = getElementData ? getElementData.join('\n\n') : null;
 
   return (
     <div className="col-12 col-md-6" style={{ marginBottom: 10 }}>
       <div style={contentStyling.container}>
         <span className="input-group-text" style={contentStyling.primary.icon}>
-          <div onClick={() => resetPriceContentElement(props.elementValue)}>
+          <div onClick={() => resetHomeContentElement(props.elementValue)}>
             <i className="fas fa-undo"></i>
           </div>
           {!currentElementContent ?
@@ -55,7 +55,7 @@ const EditHomeContent = ({ handleModalChange, currentContent, currentElementCont
           rows="5"
           name={props.elementValue}
           value={!currentElementContent ? formatElementData : currentElementContent}
-          onChange={handlePriceContentChange}
+          onChange={handleHomeContentChange}
           aria-label="With textarea">
         </textarea>
       </div>

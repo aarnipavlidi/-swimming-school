@@ -26,12 +26,12 @@ const EditHome = ({ currentContent, getNotification, updateCurrentContent, loadi
     primaryElement: null,
   });
 
-  const handlePriceContentChange = (event) => {
+  const handleHomeContentChange = (event) => {
     event.preventDefault();
     setCurrentElementContent({...currentElementContent, [event.target.name]: [event.target.value]});
   };
 
-  const resetPriceContentElement = (getElementValue) => {
+  const resetHomeContentElement = (getElementValue) => {
     setCurrentElementContent({...currentElementContent, [getElementValue]: null});
   };
 
@@ -70,8 +70,8 @@ const EditHome = ({ currentContent, getNotification, updateCurrentContent, loadi
           handleModalChange={handleModalChange}
           currentContent={currentContent}
           currentElementContent={currentElementContent.primaryElement}
-          resetPriceContentElement={resetPriceContentElement}
-          handlePriceContentChange={handlePriceContentChange}
+          resetHomeContentElement={resetHomeContentElement}
+          handleHomeContentChange={handleHomeContentChange}
           elementValue="primaryElement"
         />
       </div>

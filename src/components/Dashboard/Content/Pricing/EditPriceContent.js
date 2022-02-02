@@ -53,7 +53,7 @@ const EditPriceContent = ({ handleModalChange, currentContent, currentElementCon
   if (props.elementValue === "primaryElement") {
 
     const getElementData = currentContent.PricingData?.content[props.elementValue];
-    const formatElementData = getElementData.join('\n\n');
+    const formatElementData = getElementData ? getElementData.join('\n\n') : null;
 
     return (
       <div className="col-12 col-md-6" style={{ marginBottom: 10 }}>
@@ -86,7 +86,7 @@ const EditPriceContent = ({ handleModalChange, currentContent, currentElementCon
   } else {
 
     const getElementData = currentContent.PricingData?.content[props.elementValue];
-    const formatElementData = getElementData.join('\n\n');
+    const formatElementData = getElementData ? getElementData.join('\n\n') : null;
 
     return (
       <div className="col-12 col-md-6" style={{ marginBottom: 10 }}>

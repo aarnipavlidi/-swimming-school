@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { useAuth0 } from "@auth0/auth0-react";
 
 // Components for Dashboard folder.
 import Dashboard from './components/Dashboard/Dashboard';
@@ -17,16 +18,15 @@ import Home from './components/Home';
 import Notification from './components/Notification';
 import Pricing from './components/Pricing';
 
-import useAdmin from './hooks/useAdmin';
 import useContent from './hooks/useContent';
 
 const App = () => {
 
+  const { user, isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
+
   const [status, setStatus] = useState(null);
   const [statusMessage, setStatusMessage] = useState(null);
 
-  const [currentToken, setCurrentToken] = useState(null);
-  const { currentAdminData, loading } = useAdmin();
   const { currentContent, loadingContent } = useContent();
 
   const [collapseStatus, setCollapseStatus] = useState(false);
@@ -41,15 +41,8 @@ const App = () => {
     }, 5000)
   };
 
-  useEffect(() => {
-    const getToken = localStorage.getItem('current-admin-token');
-
-    if (getToken) {
-      setCurrentToken(getToken)
-    } else {
-      return null
-    }
-  }, []);
+  const currentAdminData = user;
+  const currentToken = isAuthenticated;
 
   return (
     <Router>
@@ -79,10 +72,8 @@ const App = () => {
                 <DashboardSideBar
                   collapseStatus={collapseStatus}
                   setCollapseStatus={setCollapseStatus}
-                  setCurrentToken={setCurrentToken}
                   getNotification={getNotification}
-                  currentAdminData={currentAdminData}
-                  loading={loading}
+                  loading={isLoading}
                 />
                 <EditContent
                   currentContent={currentContent}
@@ -101,10 +92,8 @@ const App = () => {
                 <DashboardSideBar
                   collapseStatus={collapseStatus}
                   setCollapseStatus={setCollapseStatus}
-                  setCurrentToken={setCurrentToken}
                   getNotification={getNotification}
-                  currentAdminData={currentAdminData}
-                  loading={loading}
+                  loading={isLoading}
                 />
                 <Settings
                 />
@@ -118,10 +107,8 @@ const App = () => {
                 <DashboardSideBar
                   collapseStatus={collapseStatus}
                   setCollapseStatus={setCollapseStatus}
-                  setCurrentToken={setCurrentToken}
                   getNotification={getNotification}
-                  currentAdminData={currentAdminData}
-                  loading={loading}
+                  loading={isLoading}
                 />
                 <Dashboard
                   currentAdminData={currentAdminData}
@@ -131,7 +118,7 @@ const App = () => {
             }
           </Route>
           <Route exact path="/pavmin">
-            {currentToken && currentAdminData ? <Redirect to="/pavmin/dashboard" /> : <Login setCurrentToken={setCurrentToken} loading={loading} />}
+            {currentToken && currentAdminData ? <Redirect to="/pavmin/dashboard" /> : <Login loginWithRedirect={loginWithRedirect} loading={isLoading} />}
           </Route>
           <Redirect to="/" />
         </Switch>

@@ -1,37 +1,24 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache } from '@apollo/client'
-import { setContext } from 'apollo-link-context'
+import { Auth0Provider } from "@auth0/auth0-react";
 
 import App from './App'
-import './index.css'
+import AuthorizedApolloProvider from './utils/ApolloProviderAuth0';
 
+import './index.css'
 const config = require('./utils/config');
 
-const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('current-admin-token')
-
-  return {
-    headers: {
-      ...headers,
-      authorization: token ? `bearer ${token}` : '',
-    }
-  }
-})
-
-const database = new HttpLink({
-  uri: config.DATABASE_URL,
-});
-
-const client = new ApolloClient({
-  connectToDevTools: true,
-  cache: new InMemoryCache(),
-  link: authLink.concat(database)
-})
-
 ReactDOM.render(
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>,
+  <Auth0Provider
+    domain={config.AUTH0_DOMAIN_NAME}
+    clientId={config.AUTH0_CLIENT_ID}
+    redirectUri={window.location.origin}
+    audience={config.AUTH0_AUDIENCE}
+    scope={config.AUTH0_SCOPE}
+  >
+    <AuthorizedApolloProvider>
+      <App />
+    </AuthorizedApolloProvider>
+  </Auth0Provider>,
   document.getElementById('root')
 )

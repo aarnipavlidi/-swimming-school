@@ -1,37 +1,15 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import useLogin from '../../hooks/useLogin';
 
 import LoginButton from './LoginButton';
 import '../../css/LoginBackground.css';
-import '../../css/LoginErrorShake.css';
 
-const Login = ({ setCurrentToken, loading }) => {
-
-  const history = useHistory();
-  const [adminLogin, { adminLoading }] = useLogin();
+const Login = ({ loginWithRedirect, loading }) => {
 
   const [currentUsername, setCurrentUsername] = useState('');
   const [currentPassword, setCurrentPassword] = useState('');
-  const [loginFormShake, setLoginFormShake] = useState(false);
 
-  const handleLogin = async (event) => {
-    event.preventDefault();
-    try {
-      const { data } = await adminLogin({ username: currentUsername, password: currentPassword });
-      const response = await localStorage.getItem('current-admin-token');
-      setCurrentToken(response);
-      setCurrentUsername('');
-      setCurrentPassword('');
-      history.push("/pavmin/dashboard");
-    } catch (error) {
-      setCurrentUsername('');
-      setCurrentPassword('');
-      setLoginFormShake(true)
-      setTimeout(() => {
-        setLoginFormShake(false)
-      }, 1500)
-    };
+  const handleLogin = () => {
+    loginWithRedirect();
   };
 
   const loadingSpinner = {
@@ -87,7 +65,7 @@ const Login = ({ setCurrentToken, loading }) => {
 
   return (
     <div className="animated-background" style={backgroundStyling}>
-      <div className={loginFormShake ? 'container + loginFormShake' : 'container'}>
+      <div className="container">
         <div className="row" style={{ justifyContent: 'center' }}>
           <div className="col-9 col-md-5 shadow-lg rounded-3" style={loginFormStyling}>
             <div style={textStyling}>
@@ -119,7 +97,7 @@ const Login = ({ setCurrentToken, loading }) => {
                   required
                 />
               </div>
-              <LoginButton buttonLoading={adminLoading} />
+              <LoginButton buttonLoading={false} />
             </form>
           </div>
         </div>

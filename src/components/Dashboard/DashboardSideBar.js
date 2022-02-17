@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useApolloClient } from '@apollo/client';
+import { useAuth0 } from '@auth0/auth0-react';
 import '../../css/SideBarStyling.css';
 
-const DashboardSideBar = ({ collapseStatus, setCollapseStatus, setCurrentToken, getNotification, currentAdminData, loading }) => {
+const DashboardSideBar = ({ collapseStatus, setCollapseStatus, getNotification, loading }) => {
 
   const client = useApolloClient();
+  const { logout } = useAuth0();
   const [showLinksBottom, setShowLinksBottom] = useState(false);
 
   const loadingStyling = {
@@ -60,8 +62,7 @@ const DashboardSideBar = ({ collapseStatus, setCollapseStatus, setCurrentToken, 
 
   const logoutUserToken = async () => {
     try {
-      await localStorage.clear();
-      setCurrentToken(null);
+      await logout({ returnTo: window.location.origin });
       client.clearStore();
     } catch (error) {
       console.log(error.message);

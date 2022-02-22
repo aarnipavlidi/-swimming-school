@@ -1,33 +1,18 @@
 import React from 'react';
 
-const LoginButton = ({ buttonLoading }) => {
+import { buttonStyling } from './LoginStyling';
 
-  const buttonStyling = {
-    marginTop: 25,
-    textAlign: 'center'
-  };
+const LoginButton = ({ ...props }) => {
 
-  const loadingSpinner = {
-    color: '#FFFFFE',
-    marginRight: 5
-  }
-
-  if (buttonLoading) {
-    return (
-      <div style={buttonStyling}>
-        <button type="submit" className="btn dashboard-button content-font" style={{ color: '#FFFFFE' }} disabled>
-          <span className="spinner-border spinner-border-sm" style={loadingSpinner} role="status" aria-hidden="true"></span>
-          Kirjautuu sisään...
-        </button>
-      </div>
-    )
-  } else {
-    return (
-      <div style={buttonStyling}>
-        <button type="submit" className="btn dashboard-button content-font" style={{ color: '#FFFFFE' }}>Kirjaudu sisään</button>
-      </div>
-    );
-  };
+  return (
+    <div style={buttonStyling.container}>
+      <button type={props.type} onClick={props?.onClick ? props.onClick : null} className="btn btn-sm dashboard-button content-font" style={buttonStyling.button}>
+          <i className={props.icon} style={buttonStyling.buttonIcon}>
+            <a className="content-font" style={buttonStyling.buttonContent}>{props.content}</a>
+          </i>
+      </button>
+    </div>
+  );
 };
 
 export default LoginButton;

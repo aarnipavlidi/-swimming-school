@@ -12,7 +12,7 @@ ReactDOM.render(
   <Auth0Provider
     domain={config.AUTH0_DOMAIN_NAME}
     clientId={config.AUTH0_CLIENT_ID}
-    redirectUri={window.location.origin}
+    redirectUri={window.location.origin + "/pavmin"}
     audience={config.AUTH0_AUDIENCE}
     scope={config.AUTH0_SCOPE}
   >

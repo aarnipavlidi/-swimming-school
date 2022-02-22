@@ -22,7 +22,7 @@ import useContent from './hooks/useContent';
 
 const App = () => {
 
-  const { user, isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
+  const { user, error, isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
 
   const [status, setStatus] = useState(null);
   const [statusMessage, setStatusMessage] = useState(null);
@@ -118,7 +118,7 @@ const App = () => {
             }
           </Route>
           <Route exact path="/pavmin">
-            {currentToken && currentAdminData ? <Redirect to="/pavmin/dashboard" /> : <Login loginWithRedirect={loginWithRedirect} loading={isLoading} />}
+            {currentToken && currentAdminData ? <Redirect to="/pavmin/dashboard" /> : <Login loginWithRedirect={loginWithRedirect} errorAuth0={error} loading={isLoading} />}
           </Route>
           <Redirect to="/" />
         </Switch>

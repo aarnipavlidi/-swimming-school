@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import { useAuth0 } from "@auth0/auth0-react";
 
 // Components for Dashboard folder.
-import Dashboard from './components/Dashboard/Dashboard';
+import Dashboard from './components/Dashboard/Home/DashboardHome';
 import DashboardSideBar from './components/Dashboard/DashboardSideBar';
 import EditContent from './components/Dashboard/Content/EditContent';
-import Settings from './components/Dashboard/Settings';
+import Settings from './components/Dashboard/Settings/Settings';
 // Components for Header folder.
 import NavBar from './components/Header/NavBar';
 // Components for Login folder.
@@ -30,6 +30,7 @@ const App = () => {
   const { currentContent, loadingContent } = useContent();
 
   const [collapseStatus, setCollapseStatus] = useState(false);
+  const [containerPosition, setContainerPosition] = useState(false);
 
   const getNotification = async (message) => {
     const response = await message;
@@ -72,6 +73,7 @@ const App = () => {
                 <DashboardSideBar
                   collapseStatus={collapseStatus}
                   setCollapseStatus={setCollapseStatus}
+                  setContainerPosition={setContainerPosition}
                   getNotification={getNotification}
                   loading={isLoading}
                 />
@@ -92,10 +94,17 @@ const App = () => {
                 <DashboardSideBar
                   collapseStatus={collapseStatus}
                   setCollapseStatus={setCollapseStatus}
+                  setContainerPosition={setContainerPosition}
                   getNotification={getNotification}
                   loading={isLoading}
                 />
                 <Settings
+                  currentAdminData={currentAdminData}
+                  notificationMessage={statusMessage}
+                  notificationStatus={status}
+                  getNotification={getNotification}
+                  collapseStatus={collapseStatus}
+                  containerPosition={containerPosition}
                 />
               </> :
               <Redirect to="/pavmin" />
@@ -107,11 +116,13 @@ const App = () => {
                 <DashboardSideBar
                   collapseStatus={collapseStatus}
                   setCollapseStatus={setCollapseStatus}
+                  setContainerPosition={setContainerPosition}
                   getNotification={getNotification}
                   loading={isLoading}
                 />
                 <Dashboard
                   currentAdminData={currentAdminData}
+                  containerPosition={containerPosition}
                 />
               </> :
               <Redirect to="/pavmin" />

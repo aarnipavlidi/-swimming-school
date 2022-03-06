@@ -34,6 +34,10 @@
   transition: 0.5s;
 }
 
+.content-container-behind {
+  z-index: -1;
+}
+
 hr.custom-horizontal-line {
   background-color: rgb(96, 180, 189);
   height: 0px;

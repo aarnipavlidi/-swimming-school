@@ -16,7 +16,7 @@ const Notification = (props) => {
     return (
       <div style={notificationPositioning} className="container">
         <div style={notificationStyling}>
-          <div className="alert alert-success shadow-sm" role="alert">
+          <div className="alert alert-danger shadow-sm" role="alert">
             {props.message}
           </div>
         </div>

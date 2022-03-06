@@ -4,7 +4,7 @@ import { useApolloClient } from '@apollo/client';
 import { useAuth0 } from '@auth0/auth0-react';
 import '../../css/SideBarStyling.css';
 
-const DashboardSideBar = ({ collapseStatus, setCollapseStatus, getNotification, loading }) => {
+const DashboardSideBar = ({ collapseStatus, setCollapseStatus, setContainerPosition, getNotification, loading }) => {
 
   const client = useApolloClient();
   const { logout } = useAuth0();
@@ -41,11 +41,13 @@ const DashboardSideBar = ({ collapseStatus, setCollapseStatus, getNotification, 
       })
       setShowLinksBottom(true)
       setCollapseStatus(true)
+      setContainerPosition(true)
     };
 
     if (option === 'toggle' && collapseStatus === true) {
       setCollapseStatus(false)
       setTimeout(() => {
+        setContainerPosition(false)
         setShowLinksBottom(false)
       }, 500)
     };
@@ -53,6 +55,7 @@ const DashboardSideBar = ({ collapseStatus, setCollapseStatus, getNotification, 
     if (option === 'navlink' && collapseStatus === true) {
       setCollapseStatus(false)
       setTimeout(() => {
+        setContainerPosition(false)
         setShowLinksBottom(false)
       }, 500)
     } else {
@@ -60,9 +63,9 @@ const DashboardSideBar = ({ collapseStatus, setCollapseStatus, getNotification, 
     };
   };
 
-  const logoutUserToken = async () => {
+  const logoutUserToken = () => {
     try {
-      await logout({ returnTo: window.location.origin });
+      logout({ returnTo: window.location.origin + "/pavmin" });
       client.clearStore();
     } catch (error) {
       console.log(error.message);

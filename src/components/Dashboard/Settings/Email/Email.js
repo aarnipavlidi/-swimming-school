@@ -1,7 +1,7 @@
 import React from 'react';
 import { EmailStyling } from './EmailStyling';
 
-const EditEmail = ({ containerPosition }) => {
+const EditEmail = ({ containerPosition, handleModalChange, ...props }) => {
 
   return (
     <div className={containerPosition ? "container content-container-behind" : "container"} style={EmailStyling.mainContainer}>
@@ -20,7 +20,7 @@ const EditEmail = ({ containerPosition }) => {
             <p className="content-font">Painikkeen klikkauksen jälkeen saat erillisen linkin sähköpostiisi, jonka jälkeen sähköpostiosoitteesi on vahvistettu.</p>
           </div>
           <div style={EmailStyling.cardContentText}>
-            <button className="btn btn-sm content-font" style={EmailStyling.cardContentButton} disabled>Vahvista email</button>
+            <button disabled className="btn btn-sm content-font" style={EmailStyling.cardContentButton} onClick={() => handleModalChange(props.elementValue)} data-bs-toggle="modal" data-bs-target="#targetSettingsModal">Vahvista email</button>
           </div>
         </div>
       </div>

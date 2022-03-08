@@ -9,7 +9,7 @@ import '../../../css/Dashboard.css';
 import useUpdateContent from '../../../hooks/useUpdateContent';
 import useUpdatePricing from '../../../hooks/useUpdatePricing';
 
-const EditContent = ({ currentContent, notificationMessage, notificationStatus, getNotification, collapseStatus }) => {
+const EditContent = ({ currentContent, notificationMessage, notificationStatus, getNotification, collapseStatus, containerPosition }) => {
 
   const [updateCurrentContent, { loadingUpdateContent }] = useUpdateContent();
   const [updateCurrentPrices, { loadingUpdatePrice }] = useUpdatePricing();
@@ -30,6 +30,7 @@ const EditContent = ({ currentContent, notificationMessage, notificationStatus, 
         loadingUpdatePrice={loadingUpdatePrice}
         updateCurrentContent={updateCurrentContent}
         loadingUpdateContent={loadingUpdateContent}
+        containerPosition={containerPosition}
       />
       <EditFooter
         currentContent={currentContent}

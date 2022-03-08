@@ -4,7 +4,7 @@ import EditPriceContent from './EditPriceContent';
 import PriceButton from './PriceButton';
 import PriceSlider from './PriceSlider';
 
-const EditPrices = ({ currentContent, getNotification, updateCurrentPrices, loadingUpdatePrice, updateCurrentContent, loadingUpdateContent }) => {
+const EditPrices = ({ currentContent, getNotification, updateCurrentPrices, loadingUpdatePrice, updateCurrentContent, loadingUpdateContent, containerPosition }) => {
 
   // TODO: Look into "Notification" component, when user updates prices
   // and clicks the "toggle" button, it goes away smoothly, but if user
@@ -116,7 +116,8 @@ const EditPrices = ({ currentContent, getNotification, updateCurrentPrices, load
   };
 
   return (
-    <div className="container" style={{ backgroundColor: 'var(--optional-secondary-color)', flex: 1/3 }}>
+
+    <div className={containerPosition ? "container content-container-behind" : "container"} style={{ backgroundColor: 'var(--optional-secondary-color)', flex: 1/3 }}>
       <div style={elementStyling.titleContainer}>
         <p className="shadow rounded content-font" style={elementStyling.titleContent}>Hinnasto</p>
       </div>

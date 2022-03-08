@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import { useAuth0 } from "@auth0/auth0-react";
 
 // Components for Dashboard folder.
-import Dashboard from './components/Dashboard/Home/DashboardHome';
+import Dashboard from './components/Dashboard/Home/Dashboard';
 import DashboardSideBar from './components/Dashboard/DashboardSideBar';
 import EditContent from './components/Dashboard/Content/EditContent';
 import Settings from './components/Dashboard/Settings/Settings';
@@ -39,7 +39,7 @@ const App = () => {
     setTimeout(() => {
       setStatus(null);
       setStatusMessage(null);
-    }, 5000)
+    }, 7500)
   };
 
   const currentAdminData = user;
@@ -83,6 +83,7 @@ const App = () => {
                   notificationStatus={status}
                   getNotification={getNotification}
                   collapseStatus={collapseStatus}
+                  containerPosition={containerPosition}
                 />
               </> :
               <Redirect to="/pavmin" />
@@ -122,6 +123,9 @@ const App = () => {
                 />
                 <Dashboard
                   currentAdminData={currentAdminData}
+                  notificationMessage={statusMessage}
+                  notificationStatus={status}
+                  collapseStatus={collapseStatus}
                   containerPosition={containerPosition}
                 />
               </> :

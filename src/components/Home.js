@@ -13,7 +13,7 @@ const Home = ({ currentContent, loadingContent }) => {
 
   return (
     <div style={{ flex: 1, marginTop: 20, marginBottom: 20 }} className="container d-flex">
-      <div className="align-self-center">
+      <div className="align-self-center" id="contentContainer">
         <h2 style={{ textAlign: 'left' }} className="title-font">Yksityinen uimakoulu Oulussa</h2>
         <div>
           {currentContent.HomeData?.content.primaryElement.map(result => {

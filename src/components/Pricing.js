@@ -15,7 +15,7 @@ const Pricing = ({ currentContent, loadingContent }) => {
     <div style={{ flex: 1, marginTop: 20, marginBottom: 20 }} className="container d-flex">
       <div className="align-self-center">
         <h2 style={{ textAlign: 'left' }} className="title-font">Hinnasto</h2>
-          <div className="row">
+          <div className="row" id="pricingContainer">
             <div className="col-md text-start">
               <p className="content-font">Hinnat 1 hlö: (Huom. ei sisällä uimahallin sisäänpääsyä)</p>
               <div className="text-center">
@@ -34,7 +34,7 @@ const Pricing = ({ currentContent, loadingContent }) => {
             </div>
           </div>
           <hr className="custom-horizontal-line" />
-          <div className="row">
+          <div className="row" id="contentContainer">
             <div className="col-md text-start">
               {currentContent.PricingData?.content.primaryElement.map(result => {
                 return <p className="content-font">{result}</p>

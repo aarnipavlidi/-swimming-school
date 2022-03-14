@@ -1,21 +1,6 @@
 /// <reference types="cypress" />
 
-const websiteMainTitle = "Santun Uimakoulu";
-
-const addHomeContent = {
-  value: "Home",
-  content: {
-    secondaryElement: [],
-    primaryElement: [
-      "Welcome to the homepage, this is a first <p> element.",
-      "And this one is a second <p> element. Wohoo!"
-    ]
-  }
-};
-
-const deleteHomeContent = {
-  "value": "Home"
-};
+import { websiteMainTitle, addHomeContent, deleteHomeContent } from '../../../../src/utils/cypress';
 
 describe(`Testing homepage for ${websiteMainTitle} website`, () => {
   
@@ -31,22 +16,15 @@ describe(`Testing homepage for ${websiteMainTitle} website`, () => {
     cy.log("Deleted value from the database.")
   })
 
-
   it('Making sure that hamburger icon is clickable and different links are shown to the user', () => {
-    // Testing that website "main title" is right value.
     cy.get('.custom-navbar-styling > a')
       .first()
       .should('have.text', websiteMainTitle)
 
-    // Testing that "hamburger icon" is visible on mobile
-    // view and it is clickable.
     cy.get('.navbar-toggler > span')
       .should('be.visible')
       .click()
 
-    // Finding element with specific id value and then making sure
-    // it has right styling and inside of that element we are getting
-    // first element with given styling and checking if it has right values.
     cy.get('#navbarSupportedContent')
       .should('have.class', 'show')
       .within(() => {
@@ -60,8 +38,13 @@ describe(`Testing homepage for ${websiteMainTitle} website`, () => {
       })
   })
 
-
-
-
-
+  it('Checking does website render content from database back to the user', () => {
+    cy.get('#contentContainer')
+      .should('have.class', 'align-self-center')
+      .within(() => {
+        cy.get('p.content-font')
+          .should('be.visible')
+          .should('have.length', 2)
+      })
+  })
 })

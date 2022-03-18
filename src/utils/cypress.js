@@ -1,5 +1,8 @@
 export const websiteMainTitle = "Santun Uimakoulu";
 
+export const notificationSuccessfulMessage = "Kiitoksia yhteydenotosta! Olemme teihin yhteydessä mahdollisimman pian.";
+export const notificationNotSuccessfulMessage = "Viestin lähettäminen epäonnistui! Yrittäkää kokeilla uudestaan myöhemmin.";
+
 export const addHomeContent = {
   value: "Home",
   content: {

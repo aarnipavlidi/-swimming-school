@@ -73,13 +73,13 @@ const Contact = ({ loadingContent, getNotification }) => {
         <div>
           <h2>Yhteydenottolomake</h2>
         </div>
-        <form onSubmit={handleFormSend}>
+        <form onSubmit={handleFormSend} id="formContainer">
           <div className="row">
             <div className="col">
-              <label for='validationClientName' className="form-label">Etunimi</label>
+              <label id="labelClientName" for='validationClientName' className="form-label">Etunimi</label>
               <input
               type="text"
-              name='from_name'
+              name="from_name"
               value={contactForm.from_name}
               className="form-control"
               onChange={handleForm}
@@ -88,21 +88,21 @@ const Contact = ({ loadingContent, getNotification }) => {
               />
             </div>
             <div className="col">
-              <label for='validationClientLastname' className="form-label">Sukunimi</label>
+              <label id="labelClientLastName" for='validationClientLastName' className="form-label">Sukunimi</label>
               <input
               type="text"
               name='from_lastname'
               value={contactForm.from_lastname}
               className="form-control"
               onChange={handleForm}
-              id='validationClientLastname'
+              id='validationClientLastName'
               required
               />
             </div>
           </div>
           <div className="row">
             <div className="col">
-              <label for='validationClientEmail' className="form-label">Sähköposti</label>
+              <label id="labelClientEmail" for='validationClientEmail' className="form-label">Sähköposti</label>
               <input
               type="email"
               name='reply_to'
@@ -114,7 +114,7 @@ const Contact = ({ loadingContent, getNotification }) => {
               />
             </div>
             <div className="col">
-              <label for='validationClientNumber' className="form-label">Puhelinnumero</label>
+              <label id="labelClientNumber" for='validationClientNumber' className="form-label">Puhelinnumero</label>
               <input
               type="number"
               name='from_number'
@@ -127,16 +127,16 @@ const Contact = ({ loadingContent, getNotification }) => {
             </div>
           </div>
           <div className="mb-3">
-            <label for='validationClientMessage' className="form-label">Viestikenttä</label>
+            <label id="labelClientMessage" for='validationClientMessage' className="form-label">Viestikenttä</label>
             <textarea className="form-control" rows="5" name='message' value={contactForm.message} onChange={handleForm} id='validationClientMessage' required></textarea>
           </div>
           <div style={hideLoading}>
-            <div className="text-center">
+            <div id="labelButtonNotLoading" className="text-center">
               <button type="submit" className="btn btn-outline-dark button-position">Lähetä</button>
             </div>
           </div>
           <div style={showLoading}>
-            <div className="text-center">
+            <div id="labelButtonLoading" className="text-center">
               <button type="button" className="btn btn-dark button-position" disabled><span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Lähettää...</button>
             </div>
           </div>

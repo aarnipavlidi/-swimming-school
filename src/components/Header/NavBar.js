@@ -27,7 +27,7 @@ const NavBar = ({ currentToken, currentAdminData }) => {
                 <a className="nav-link navbar-content"><NavLink activeClassName="active" style={styling} to="/hinnasto">Hinnasto</NavLink></a>
               </li>
               <li className="nav-item">
-                <a className="nav-link navbar-content"><NavLink activeClassName="active" style={styling} to="/otayhteyttä">Ota yhteyttä</NavLink></a>
+                <a className="nav-link navbar-content"><NavLink activeClassName="active" style={styling} to="/otayhteytta">Ota yhteyttä</NavLink></a>
               </li>
               <li className="nav-item">
                 <a className="nav-link navbar-content"><NavLink activeClassName="active" style={styling} to="/pavmin/dashboard">Hallintapaneeli</NavLink></a>
@@ -54,7 +54,7 @@ const NavBar = ({ currentToken, currentAdminData }) => {
                 <a className="nav-link navbar-content"><NavLink activeClassName="active" style={styling} to="/hinnasto">Hinnasto</NavLink></a>
               </li>
               <li className="nav-item">
-                <a className="nav-link navbar-content"><NavLink activeClassName="active" style={styling} to="/otayhteyttä">Ota yhteyttä</NavLink></a>
+                <a className="nav-link navbar-content"><NavLink activeClassName="active" style={styling} to="/otayhteytta">Ota yhteyttä</NavLink></a>
               </li>
             </ul>
           </div>

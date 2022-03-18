@@ -61,7 +61,7 @@ const App = () => {
             <Pricing currentContent={currentContent} loadingContent={loadingContent} />
             <Footer loadingContent={loadingContent} />
           </Route>
-          <Route path="/otayhteyttä">
+          <Route path="/otayhteytta">
             <NavBar currentToken={currentToken} currentAdminData={currentAdminData} />
             <Notification message={statusMessage} checkStatus={status} />
             <Contact loadingContent={loadingContent} getNotification={getNotification}  />

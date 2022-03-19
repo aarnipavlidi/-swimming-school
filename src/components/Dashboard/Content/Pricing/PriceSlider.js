@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../../../../css/PriceSliderStyling.css';
+
 const PriceSlider = ({ currentPrice, currentContent, handlePriceChange, ...props }) => {
 
   // When using "input-group" class from Bootstrap, the "div" element is being
@@ -43,7 +45,7 @@ const PriceSlider = ({ currentPrice, currentContent, handlePriceChange, ...props
           <span className="input-group-text" style={priceStyling.icon}><i className="fas fa-euro-sign"></i></span>
         </div>
       </div>
-      <input name={props.sliderInputName} onChange={handlePriceChange} value={!currentPrice[props.sliderInputName] ? defaultPriceValue : currentPrice[props.sliderInputName]} type="range" min="0" max="250" step="1" className="form-range" id={props.sliderID} />
+      <input name={props.sliderInputName} onChange={handlePriceChange} value={!currentPrice[props.sliderInputName] ? defaultPriceValue : currentPrice[props.sliderInputName]} type="range" min="0" max="250" step="1" className="form-range custom-slider-styling" id={props.sliderID} />
     </div>
   );
 };

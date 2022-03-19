@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ConfirmModal from './Modal/ConfirmModal';
+import ConfirmModal from '../Modal/ConfirmModal';
 import EditPriceContent from './EditPriceContent';
 import PriceButton from './PriceButton';
 import PriceSlider from './PriceSlider';

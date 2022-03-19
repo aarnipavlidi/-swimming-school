@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ConfirmModal from './Modal/ConfirmModal';
+import ConfirmModal from '../Modal/ConfirmModal';
 import EditHomeContent from './EditHomeContent';
 
 const EditHome = ({ currentContent, getNotification, updateCurrentContent, loadingUpdateContent }) => {

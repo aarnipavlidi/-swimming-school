@@ -1,0 +1,11 @@
+.custom-slider-styling::-webkit-slider-thumb {
+  background: var(--dashboard-color );
+}
+
+.custom-slider-styling::-moz-range-thumb {
+  background: var(--dashboard-color);
+}
+
+.custom-slider-styling::-ms-thumb {
+  background: var(--dashboard-color);
+}

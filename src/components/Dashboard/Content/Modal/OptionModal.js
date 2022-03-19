@@ -1,27 +1,41 @@
 import React from 'react';
 
-const OptionModal = ({ submitPricesDatabase, submitPriceContent, ...props }) => {
+const OptionModal = ({ submitHomeContent, submitPricesDatabase, submitPriceContent, ...props }) => {
 
   const showConfirmContent = () => {
-    if (props.value === "editPricing" && props.valueTarget === "Pricing") {
-      return "Oletko varma, että haluat muuttaa sivuston hinnastoa?"
+    if (props.value === "primaryElement" && props.valueTarget === "Home") {
+      return "Oletko varma, että haluat muuttaa etusivun sisältöä?"
     };
 
-    if (props.value === "primaryElement" && props.valueTarget == "Pricing") {
+    if (props.value === "editPricing" && props.valueTarget === "Pricing") {
+      return "Oletko varma, että haluat muuttaa sivuston hinnastoa?" 
+    };
+
+    if (props.value === "primaryElement" && props.valueTarget === "Pricing") {
       return "Oletko varma, että haluat muuttaa hinnaston vasemmanpuoleisen (primary) elementin sisältöä?"
     };
 
     if (props.value === "secondaryElement" && props.valueTarget === "Pricing") {
       return "Oletko varma, että haluat muuttaa hinnaston oikeanpuoleisen (secondary) elementin sisältöä?"
+    } else {
+      return null
     };
   };
 
   const handleSubmit = () => {
+    if (props.value === "primaryElement" && props.valueTarget === "Home") {
+      submitHomeContent(props.valueTarget, props.value)
+    };
+
     if (props.value === "editPricing" && props.valueTarget === "Pricing") {
       submitPricesDatabase();
     };
 
-    if (props.value === "primaryElement" && props.valueTarget === "Pricing" || props.value === "secondaryElement" && props.valueTarget === "Pricing") {
+    if (props.value === "primaryElement" && props.valueTarget === "Pricing") {
+      submitPriceContent(props.valueTarget, props.value)
+    };
+
+    if (props.value === "secondaryElement" && props.valueTarget === "Pricing") {
       submitPriceContent(props.valueTarget, props.value)
     } else {
       return null

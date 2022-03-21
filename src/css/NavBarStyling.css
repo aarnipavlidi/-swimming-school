@@ -1,4 +1,11 @@
 .custom-navbar-styling .active {
-  border-bottom: 3px solid #60b4bd;
+  border-bottom: 3px solid var(--primary-color);
   padding-bottom: 3px;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    outline: none;
+    box-shadow: none;
 }

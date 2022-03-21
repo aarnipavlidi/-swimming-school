@@ -8,11 +8,13 @@ import Notification from '../../Notification';
 import '../../../css/Dashboard.css';
 import useUpdateContent from '../../../hooks/useUpdateContent';
 import useUpdatePricing from '../../../hooks/useUpdatePricing';
+import useUpdateLocation from '../../../hooks/updateUpdateLocation';
 
 const EditContent = ({ currentContent, notificationMessage, notificationStatus, getNotification, collapseStatus, containerPosition }) => {
 
   const [updateCurrentContent, { loadingUpdateContent }] = useUpdateContent();
   const [updateCurrentPrices, { loadingUpdatePrice }] = useUpdatePricing();
+  const [updateCurrentLocation, { loadingUpdateLocation }] = useUpdateLocation();
 
   return (
     <div className="dashboard-container" style={collapseStatus ? { overflowY: 'hidden' } : { overflowY: 'auto' }}>
@@ -33,10 +35,11 @@ const EditContent = ({ currentContent, notificationMessage, notificationStatus, 
         containerPosition={containerPosition}
       />
       <EditFooter
-        currentContent={currentContent}
+        currentContent={currentContent.FooterData}
         getNotification={getNotification}
-        updateCurrentContent={updateCurrentContent}
-        loadingUpdateContent={loadingUpdateContent}
+        updateCurrentLocation={updateCurrentLocation}
+        loadingUpdateLocation={loadingUpdateLocation}
+        containerPosition={containerPosition}
       />
     </div>
   );

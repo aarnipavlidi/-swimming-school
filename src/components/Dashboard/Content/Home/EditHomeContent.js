@@ -31,7 +31,7 @@ const EditHomeContent = ({ handleModalChange, currentContent, currentElementCont
   };
 
   const getElementData = currentContent.HomeData?.content[props.elementValue];
-  const formatElementData = getElementData ? getElementData.join('\n\n') : null;
+  const formatElementData = getElementData ? getElementData.join('\n\n') : "";
 
   return (
     <div className="col-12 col-md-6" style={{ marginBottom: 10 }}>

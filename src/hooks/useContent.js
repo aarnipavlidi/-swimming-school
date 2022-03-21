@@ -7,7 +7,8 @@ const useContent = () => {
   const { loading, error, data } = useQuery(CURRENT_CONTENT);
   const [currentContent, setCurrentContent] = useState({
     PricingData: null,
-    HomeData: null
+    HomeData: null,
+    FooterData: null
   });
 
   useEffect(() => {
@@ -15,6 +16,7 @@ const useContent = () => {
       setCurrentContent({
         PricingData: data.showCurrentContent.find(results => results.value === "Pricing"),
         HomeData: data.showCurrentContent.find(results => results.value === "Home"),
+        FooterData: data.showCurrentContent.find(results => results.value === "Footer"),
       });
     };
   }, [data]);

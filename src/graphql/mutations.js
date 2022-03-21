@@ -24,7 +24,7 @@ export const UPDATE_PRICING = gql`
 
 export const UPDATE_CONTENT = gql`
   mutation getContentValues(
-    $getSourceData: String!
+    $getSourceData: String!,
     $getElementData: String!,
     $getElementValueData: [String!]
   ) {
@@ -32,6 +32,46 @@ export const UPDATE_CONTENT = gql`
       getSource: $getSourceData,
       getElement: $getElementData,
       getElementValue: $getElementValueData
+    ) {
+      response
+    }
+  }
+`
+
+export const UPDATE_LOCATION = gql`
+  mutation getLocationValues(
+    $getNewAddressData: String!,
+    $getNewPostalCodeData: Int!,
+    $getNewCityData: String!
+  ) {
+    updateLocation(
+      getNewAddress: $getNewAddressData,
+      getNewPostalCode: $getNewPostalCodeData,
+      getNewCity: $getNewCityData
+    ) {
+      response
+    }
+  }
+`
+
+export const UPDATE_PHONE_NUMBER = gql`
+  mutation getPhoneNumberValue(
+    $getNewNumberData: Int!
+  ) {
+    updatePhoneNumber(
+      getNewNumber: $getNewNumberData
+    ) {
+      response
+    }
+  }
+`
+
+export const UPDATE_EMAIL = gql`
+  mutation getEmailValue(
+    $getNewEmailData: Int!
+  ) {
+    updateEmail(
+      getNewEmail: $getNewEmailData
     ) {
       response
     }

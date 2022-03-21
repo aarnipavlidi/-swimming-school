@@ -16,6 +16,17 @@ export const CURRENT_CONTENT = gql`
         primaryElement
         secondaryElement
       }
+      footer {
+        location {
+          address
+          postalCode
+          city
+        }
+        contact {
+          phoneNumber
+          email
+        }
+      }
     }
   }
 `

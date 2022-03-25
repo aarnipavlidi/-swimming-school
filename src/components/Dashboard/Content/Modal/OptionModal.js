@@ -55,7 +55,7 @@ const OptionModal = ({ submitHomeContent, submitPricesDatabase, submitPriceConte
       submitLocationDatabase();
     };
 
-    if (props.value === "email" || props.value === "phoneNumber" && props.valueTarget === "Footer") {
+    if ((props.value === "email" && props.valueTarget === "Footer") || (props.value === "phoneNumber" && props.valueTarget === "Footer")) {
       submitContactDatabase(props.value);
     } else {
       return null

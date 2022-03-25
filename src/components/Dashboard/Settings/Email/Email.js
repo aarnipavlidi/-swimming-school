@@ -11,7 +11,7 @@ const EditEmail = ({ containerPosition, handleModalChange, ...props }) => {
             <i className="fa-solid fa-at"></i>
           </div>
           <div className="title-font" style={EmailStyling.cardHeaderText}>
-            <a>Vahvista sähköpostiosoitteesi</a>
+            <p>Vahvista sähköpostiosoitteesi</p>
           </div>
         </div>
         <div className="card-body" style={EmailStyling.cardContent}>

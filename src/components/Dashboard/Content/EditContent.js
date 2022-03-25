@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import EditFooter from './Footer/EditFooter';
 import EditHome from './Home/EditHome';
 import EditPrices from './Pricing/EditPrices';

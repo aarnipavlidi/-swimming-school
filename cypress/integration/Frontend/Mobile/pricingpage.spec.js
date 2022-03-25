@@ -17,7 +17,7 @@ describe(`Testing pricing page for ${websiteMainTitle} website`, () => {
   })
 
   it('Checking that user is able to go different page and that page is showing right data from the database', () => {
-    cy.get('.custom-navbar-styling > a')
+    cy.get('.custom-navbar-styling > h1')
       .first()
       .should('have.text', websiteMainTitle)
 

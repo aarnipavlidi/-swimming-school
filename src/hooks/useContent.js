@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { CURRENT_CONTENT } from '../graphql/queries';
 
 const useContent = () => {
 
-  const { loading, error, data } = useQuery(CURRENT_CONTENT);
+  const { loading, data } = useQuery(CURRENT_CONTENT);
   const [currentContent, setCurrentContent] = useState({
     PricingData: null,
     HomeData: null,

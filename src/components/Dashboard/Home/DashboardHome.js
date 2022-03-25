@@ -12,7 +12,7 @@ const Dashboard = ({ currentAdminData, containerPosition }) => {
           <p className="content-font" style={DashboardHomeStyling.contentText}>Jos tulee kysyttävää tai ehdotuksia esim. sivuston parantamisen suhteen, niin ole ilman muuta yhteydessä!</p>
         </div>
         <div>
-          <img src={currentAdminData.picture} className="rounded-circle shadow" style={DashboardHomeStyling.userImage}></img>
+          <img alt="userImage" src={currentAdminData.picture} className="rounded-circle shadow" style={DashboardHomeStyling.userImage}></img>
         </div>
       </div>
     </div>

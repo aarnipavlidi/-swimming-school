@@ -11,7 +11,7 @@ const EditPassword = ({ currentAdminData, containerPosition, getNotification, ha
             <i className="fa-solid fa-key"></i>
           </div>
           <div className="title-font" style={PasswordStyling.cardHeaderText}>
-            <a>Vaihda salasanasi</a>
+            <p>Vaihda salasanasi</p>
           </div>
         </div>
         <div className="card-body" style={PasswordStyling.cardContent}>

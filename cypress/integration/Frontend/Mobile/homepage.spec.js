@@ -17,7 +17,7 @@ describe(`Testing homepage for ${websiteMainTitle} website`, () => {
   })
 
   it('Making sure that hamburger icon is clickable and different links are shown to the user', () => {
-    cy.get('.custom-navbar-styling > a')
+    cy.get('.custom-navbar-styling > h1')
       .first()
       .should('have.text', websiteMainTitle)
 

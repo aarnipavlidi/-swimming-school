@@ -32,14 +32,22 @@ export const buttonStyling = {
     button: {
       color: 'var(--secondary-color)',
     },
+    buttonContainer: {
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginTop: 5,
+      marginBottom: 5,
+    },
     buttonContent: {
       marginLeft: 10,
       textDecoration: 'none',
       color: 'var(--secondary-color)',
-      fontSize: 12
+      fontSize: 12,
+      fontStyle: 'normal'
     },
     buttonIcon: {
-      fontSize: 12
+      fontSize: 12,
     },
     dividerContainer: {
       display: 'flex',

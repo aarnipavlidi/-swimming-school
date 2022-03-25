@@ -18,7 +18,7 @@ describe(`Testing contact page for ${websiteMainTitle} website`, () => {
   })
 
   it('Testing that contact form has proper styling and attributes', () => {
-    cy.get('.custom-navbar-styling > a')
+    cy.get('.custom-navbar-styling > h1')
       .first()
       .should('have.text', websiteMainTitle)
 

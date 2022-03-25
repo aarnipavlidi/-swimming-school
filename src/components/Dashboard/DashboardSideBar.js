@@ -24,6 +24,10 @@ const DashboardSideBar = ({ collapseStatus, setCollapseStatus, setContainerPosit
     height: 50
   };
 
+  const linksStyling = {
+    textDecoration: 'none'
+  };
+
   // I had some problems with styling the "bottom navlinks" element.
   // Everytime user presses the "toggle" button, the bottom links css
   // element gets changed instantly, because of the ternary operator
@@ -88,20 +92,20 @@ const DashboardSideBar = ({ collapseStatus, setCollapseStatus, setContainerPosit
         <div className={collapseStatus ? 'active + header-nav' : 'header-nav'}>
           <ul className="header-ul">
             <li className="header-li">
-              <a onClick={() => showToggleContent('navlink')}><NavLink className="header-a" exact activeClassName="active" to="/pavmin/dashboard">Etusivu</NavLink></a>
+              <a href="#default" style={linksStyling} onClick={() => showToggleContent('navlink')}><NavLink className="header-a" exact activeClassName="active" to="/pavmin/dashboard">Etusivu</NavLink></a>
             </li>
             <li className="header-li">
-              <a onClick={() => showToggleContent('navlink')}><NavLink className="header-a" exact activeClassName="active" to="/pavmin/dashboard/settings">Omat tiedot</NavLink></a>
+              <a href="#default" style={linksStyling} onClick={() => showToggleContent('navlink')}><NavLink className="header-a" exact activeClassName="active" to="/pavmin/dashboard/settings">Omat tiedot</NavLink></a>
             </li>
             <li className="header-li">
-              <a onClick={() => showToggleContent('navlink')}><NavLink className="header-a" exact activeClassName="active" to="/pavmin/dashboard/editcontent">Muokkaa sisältöä</NavLink></a>
+              <a href="#default" style={linksStyling} onClick={() => showToggleContent('navlink')}><NavLink className="header-a" exact activeClassName="active" to="/pavmin/dashboard/editcontent">Muokkaa sisältöä</NavLink></a>
             </li>
             <div className={collapseStatus || showLinksBottom ? 'header-nav-bottom' : 'header-nav-end'}>
               <li className="header-li">
-                <a onClick={() => showToggleContent('navlink')}><NavLink className="header-a" exact activeClassName="active" to="/">Takaisin uimakouluun</NavLink></a>
+                <a href="#default" style={linksStyling} onClick={() => showToggleContent('navlink')}><NavLink className="header-a" exact activeClassName="active" to="/">Takaisin uimakouluun</NavLink></a>
               </li>
               <li className="header-li">
-                <a onClick={logoutUserToken}><NavLink className="header-a" to>Kirjaudu ulos</NavLink></a>
+                <a href="#default" style={linksStyling} onClick={logoutUserToken}><NavLink className="header-a" to>Kirjaudu ulos</NavLink></a>
               </li>
             </div>
           </ul>

@@ -1,9 +1,9 @@
 import React from "react";
 
-import LabelLocation from "./LabelLocation";
-import InputLocation from './InputLocation';
+import LabelFooter from "../Styling/Label";
+import InputFooter from '../Styling/Input';
 
-import { EditFooterLocationContainer } from '../EditFooterStyling';
+import { EditFooterLocationContainer } from '../Styling/EditFooterStyling';
 
 const ChangeLocation = ({ currentContent, currentLocation, handleLocationChange, loadingUpdateLocation, ...props }) => {
 
@@ -15,48 +15,48 @@ const ChangeLocation = ({ currentContent, currentLocation, handleLocationChange,
     <div className="col-12 col-md-6" style={EditFooterLocationContainer.element}>
       <form>
         <div>
-          <LabelLocation 
+          <LabelFooter 
             iconStyling="fa-solid fa-map-location"
             labelFor="locationAddressInput"
             labelName="Osoite"
           />
-          <InputLocation
+          <InputFooter
             id="locationAddressInput"
             type="text"
             name={props.inputAddress}
-            currentLocation={currentLocation}
-            defaultLocation={defaultAddressValue}
-            handleLocationChange={handleLocationChange}
+            currentValue={currentLocation}
+            defaultValue={defaultAddressValue}
+            handleValueChange={handleLocationChange}
           />
-        </div>
+        </div> 
         <div>
-          <LabelLocation 
+          <LabelFooter 
             iconStyling="fa-solid fa-map-pin"
             labelFor="locationPostalCodeInput"
             labelName="Postinumero"
           />
-          <InputLocation
+          <InputFooter
             id="locationPostalCodeInput"
             type="number"
             name={props.inputPostalCode}
-            currentLocation={currentLocation}
-            defaultLocation={defaultPostalCodeValue}
-            handleLocationChange={handleLocationChange}
+            currentValue={currentLocation}
+            defaultValue={defaultPostalCodeValue}
+            handleValueChange={handleLocationChange}
           />
         </div>
         <div>
-          <LabelLocation 
+          <LabelFooter 
             iconStyling="fa-solid fa-city"
             labelFor="locationCityInput"
             labelName="Kaupunki"
           />
-          <InputLocation
+          <InputFooter
             id="locationCityInput"
             type="text"
             name={props.inputCity}
-            currentLocation={currentLocation}
-            defaultLocation={defaultCityValue}
-            handleLocationChange={handleLocationChange}
+            currentValue={currentLocation}
+            defaultValue={defaultCityValue}
+            handleValueChange={handleLocationChange}
           />
         </div>
       </form>

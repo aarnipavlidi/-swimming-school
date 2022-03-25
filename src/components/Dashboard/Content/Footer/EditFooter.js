@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 
 import ChangeLocation from './Location/ChangeLocation';
 import ButtonLocation from './Location/ButtonLocation';
+import ChangeContact from './Contact/ChangeContact';
 
 import ConfirmModal from '../Modal/ConfirmModal';
 
-import { EditFooterMainContainer } from './EditFooterStyling';
+import { EditFooterMainContainer } from './Styling/EditFooterStyling';
 
-const EditFooter = ({ currentContent, getNotification, updateCurrentLocation, loadingUpdateLocation, containerPosition }) => {
-
+const EditFooter = ({ currentContent, getNotification, updateCurrentLocation, loadingUpdateLocation, updateCurrentEmail, loadingUpdateEmail, updateCurrentPhoneNumber, loadingUpdatePhoneNumber, containerPosition }) => {
+    
   const [currentChosenModal, setCurrentChosenModal] = useState(null);
   const handleModalChange = (getCurrentModal) => {
     setCurrentChosenModal(getCurrentModal)
@@ -29,7 +30,17 @@ const EditFooter = ({ currentContent, getNotification, updateCurrentLocation, lo
 
   const handleLocationChange = (event) => {
     event.preventDefault();
-    setCurrentLocation({ ...currentLocation, [event.target.name]: event.target.value })
+    setCurrentLocation({ ...currentLocation, [event.target.name]: event.target.value });
+  };
+
+  const [currentContact, setCurrentContact] = useState({
+    email: null,
+    phoneNumber: null,
+  });
+
+  const handleContactChange = (event) => {
+    event.preventDefault();
+    setCurrentContact({ ...currentContact, [event.target.name]: event.target.value });
   };
 
   const submitLocationDatabase = async () => {
@@ -45,6 +56,40 @@ const EditFooter = ({ currentContent, getNotification, updateCurrentLocation, lo
         status: true,
       });
       setCurrentLocation({ address: null, postalCode: null, city: null });
+    } catch (error) {
+      getNotification({
+        message: error.message,
+        status: false,
+      })
+    };
+  };
+
+  const submitContactDatabase = async (getInputElement) => {
+
+    const email = currentContact.email ? currentContact.email : !currentContent?.footer.contact.email ? "" : currentContent.footer.contact.email;
+    const phoneNumber = currentContact.phoneNumber ? currentContact.phoneNumber : !currentContent?.footer.contact.phoneNumber ? "" : currentContent.footer.contact.phoneNumber;
+
+    try {
+
+      if (getInputElement === "email") {
+        const response = await updateCurrentEmail({ email });
+        getNotification({
+          message: response.updateEmail.response,
+          status: true,
+        });
+        setCurrentContact({ ...currentContact, [getInputElement]: null });
+      };
+
+      if (getInputElement === "phoneNumber") {
+        const response = await updateCurrentPhoneNumber({ phoneNumber });
+        getNotification({
+          message: response.updatePhoneNumber.response,
+          status: true,
+        });
+        setCurrentContact({ ...currentContact, [getInputElement]: null });
+      };
+
+      return null
     } catch (error) {
       getNotification({
         message: error.message,
@@ -76,8 +121,21 @@ const EditFooter = ({ currentContent, getNotification, updateCurrentLocation, lo
             loadingUpdateLocation={loadingUpdateLocation}
           />
         </div>
+        <div className="col-12 col-md-6">
+          <ChangeContact
+            currentContent={currentContent?.contact}
+            currentContact={currentContact}
+            setCurrentContact={setCurrentContact}
+            handleContactChange={handleContactChange}
+            handleModalChange={handleModalChange}
+            loadingUpdateEmail={loadingUpdateEmail}
+            loadingUpdatePhoneNumber={loadingUpdatePhoneNumber}
+            inputEmail="email"
+            inputNumber="phoneNumber"
+          />
+        </div>
       </div>
-      <ConfirmModal submitLocationDatabase={submitLocationDatabase} value={currentChosenModal} valueTarget="Footer" />
+      <ConfirmModal submitLocationDatabase={submitLocationDatabase} submitContactDatabase={submitContactDatabase} value={currentChosenModal} valueTarget="Footer" />
     </div>
   );
 };

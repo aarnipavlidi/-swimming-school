@@ -41,7 +41,7 @@ export const UPDATE_CONTENT = gql`
 export const UPDATE_LOCATION = gql`
   mutation getLocationValues(
     $getNewAddressData: String!,
-    $getNewPostalCodeData: Int!,
+    $getNewPostalCodeData: String!,
     $getNewCityData: String!
   ) {
     updateLocation(
@@ -56,7 +56,7 @@ export const UPDATE_LOCATION = gql`
 
 export const UPDATE_PHONE_NUMBER = gql`
   mutation getPhoneNumberValue(
-    $getNewNumberData: Int!
+    $getNewNumberData: String!
   ) {
     updatePhoneNumber(
       getNewNumber: $getNewNumberData
@@ -68,7 +68,7 @@ export const UPDATE_PHONE_NUMBER = gql`
 
 export const UPDATE_EMAIL = gql`
   mutation getEmailValue(
-    $getNewEmailData: Int!
+    $getNewEmailData: String!
   ) {
     updateEmail(
       getNewEmail: $getNewEmailData

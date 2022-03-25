@@ -14,23 +14,27 @@ export const EditFooterMainContainer = {
   },
 };
 
+export const EditFooterLabel = {
+  labelContainer: {
+    fontSize: 15,
+    color: 'var(--content-color)',
+  },
+  labelIcon: {
+    marginRight: 5,
+  },
+};
+
+export const EditFooterInput = {
+  input: {
+    fontSize: 15,
+    color: 'var(--content-color)',
+  },
+};
+
 export const EditFooterLocationContainer = {
   element: {
     width: '100%',
     marginBottom: 25,
-  },
-  input: {
-    marginTop: 5,
-    marginBottom: 5,
-    fontSize: 15,
-    color: 'var(--content-color)'
-  },
-  labelContainer: {
-    fontSize: 15,
-    color: 'var(--content-color)'
-  },
-  labelIcon: {
-    marginRight: 5,
   },
   buttonContainer: {
     display: 'flex',
@@ -46,6 +50,20 @@ export const EditFooterLocationContainer = {
   content: {
     display: 'flex',
     gap: 10,
+    color: 'var(--secondary-color)',
+    alignItems: 'center',
+  }
+};
+
+export const EditFooterContactContainer = {
+  element: {
+    width: '100%',
+    marginBottom: 25,
+  },
+  button: {
+    backgroundColor: 'var(--dashboard-color)',
+  },
+  content: {
     color: 'var(--secondary-color)',
     alignItems: 'center',
   }

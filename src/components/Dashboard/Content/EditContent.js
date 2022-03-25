@@ -9,12 +9,16 @@ import '../../../css/Dashboard.css';
 import useUpdateContent from '../../../hooks/useUpdateContent';
 import useUpdatePricing from '../../../hooks/useUpdatePricing';
 import useUpdateLocation from '../../../hooks/updateUpdateLocation';
+import useUpdateEmail from '../../../hooks/useUpdateEmail';
+import useUpdatePhoneNumber from '../../../hooks/useUpdatePhoneNumber';
 
 const EditContent = ({ currentContent, notificationMessage, notificationStatus, getNotification, collapseStatus, containerPosition }) => {
 
   const [updateCurrentContent, { loadingUpdateContent }] = useUpdateContent();
   const [updateCurrentPrices, { loadingUpdatePrice }] = useUpdatePricing();
   const [updateCurrentLocation, { loadingUpdateLocation }] = useUpdateLocation();
+  const [updateCurrentEmail, { loadingUpdateEmail }] = useUpdateEmail();
+  const [updateCurrentPhoneNumber, { loadingUpdatePhoneNumber }] = useUpdatePhoneNumber();
 
   return (
     <div className="dashboard-container" style={collapseStatus ? { overflowY: 'hidden' } : { overflowY: 'auto' }}>
@@ -39,6 +43,10 @@ const EditContent = ({ currentContent, notificationMessage, notificationStatus, 
         getNotification={getNotification}
         updateCurrentLocation={updateCurrentLocation}
         loadingUpdateLocation={loadingUpdateLocation}
+        updateCurrentEmail={updateCurrentEmail}
+        loadingUpdateEmail={loadingUpdateEmail}
+        updateCurrentPhoneNumber={updateCurrentPhoneNumber}
+        loadingUpdatePhoneNumber={loadingUpdatePhoneNumber}
         containerPosition={containerPosition}
       />
     </div>

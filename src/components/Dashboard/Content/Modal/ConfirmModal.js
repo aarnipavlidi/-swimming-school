@@ -3,7 +3,7 @@ import OptionModal from './OptionModal';
 
 import  { ModalStyling } from './ModalStyling';
 
-const ConfirmModal = ({ submitHomeContent, submitPricesDatabase, submitLocationDatabase, submitPriceContent, ...props }) => {
+const ConfirmModal = ({ submitHomeContent, submitPricesDatabase, submitLocationDatabase, submitContactDatabase, submitPriceContent, ...props }) => {
 
   if (props.valueTarget === "Home") {
     return (
@@ -46,7 +46,7 @@ const ConfirmModal = ({ submitHomeContent, submitPricesDatabase, submitLocationD
               <h5 className="modal-title title-font" style={ModalStyling.title} id="staticBackdropLabel">Vahvista (Yhteystiedot)</h5>
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <OptionModal submitLocationDatabase={submitLocationDatabase} value={props.value} valueTarget={props.valueTarget} styling={ModalStyling.button} />
+            <OptionModal submitLocationDatabase={submitLocationDatabase} submitContactDatabase={submitContactDatabase} value={props.value} valueTarget={props.valueTarget} styling={ModalStyling.button} />
           </div>
         </div>
       </div>

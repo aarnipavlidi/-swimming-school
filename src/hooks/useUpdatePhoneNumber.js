@@ -10,12 +10,12 @@ const useUpdatePhoneNumber = () => {
     }],
   });
   
-  const updateCurrentPhoneNumber = async ({ phonenumber }) => {
+  const updateCurrentPhoneNumber = async ({ phoneNumber }) => {
 
     try {
       const response = await getPhoneNumberValue({
         variables: {
-          getNewNumberData: phonenumber,
+          getNewNumberData: phoneNumber,
         },
       });
 

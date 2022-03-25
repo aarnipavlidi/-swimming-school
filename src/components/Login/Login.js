@@ -45,12 +45,12 @@ const Login = ({ loginWithRedirect, errorAuth0, loading }) => {
       <div className={loginFormShake ? 'container + loginFormShake' : 'container'}>
         <div className="row" style={{ justifyContent: 'center' }}>
           <div className="col-9 col-md-5 shadow-lg rounded-3" style={loginFormStyling}>
-            <div style={textStyling}>
+            <div style={textStyling} id="headerContentContainer">
               <h4 className="title-font">Dashboard</h4>
               <p className="content-font">{loginFormMessage ? errorAuth0.message : 'Please login'} <i className="fas fa-heart"></i></p>
             </div>
             <form onSubmit={handleLogin}>
-              <LoginButton icon="fa-solid fa-right-to-bracket" type="submit" content="Kirjaudu sisään" />
+              <LoginButton id="loginButtonContainer" icon="fa-solid fa-right-to-bracket" type="submit" content="Kirjaudu sisään" />
               <div style={buttonStyling.dividerContainer}>
                 <div style={buttonStyling.dividerElement}>
                   <hr style={buttonStyling.divider} />
@@ -62,7 +62,7 @@ const Login = ({ loginWithRedirect, errorAuth0, loading }) => {
                   <hr style={buttonStyling.divider} />
                 </div>
               </div>
-              <LoginButton icon="fa-solid fa-house" type="button" content="Palaa etusivulle" onClick={goBackHome} />
+              <LoginButton id="returnButtonContainer" icon="fa-solid fa-house" type="button" content="Palaa etusivulle" onClick={goBackHome} />
             </form>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { EditFooterLocationContainer } from '../EditFooterStyling';
+import { EditFooterLocationContainer } from '../Styling/EditFooterStyling';
 
 const ButtonLocation = ({ checkLocationStatus, setCurrentLocation, handleModalChange, loadingUpdateLocation }) => {
 

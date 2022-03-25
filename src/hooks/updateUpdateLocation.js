@@ -15,7 +15,7 @@ const useUpdateLocation = () => {
       const response = await getLocationValues({
         variables: {
           getNewAddressData: address,
-          getNewPostalCodeData: parseInt(postalCode),
+          getNewPostalCodeData: postalCode,
           getNewCityData: city,
         },
       });

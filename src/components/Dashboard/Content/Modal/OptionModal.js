@@ -1,6 +1,6 @@
 import React from 'react';
 
-const OptionModal = ({ submitHomeContent, submitPricesDatabase, submitPriceContent, submitLocationDatabase, ...props }) => {
+const OptionModal = ({ submitHomeContent, submitPricesDatabase, submitPriceContent, submitLocationDatabase, submitContactDatabase, ...props }) => {
 
   const showConfirmContent = () => {
     if (props.value === "primaryElement" && props.valueTarget === "Home") {
@@ -21,6 +21,14 @@ const OptionModal = ({ submitHomeContent, submitPricesDatabase, submitPriceConte
 
     if (props.value === "footerLocation" && props.valueTarget === "Footer") {
       return "Oletko varma, että haluat muuttaa nykyisten yhteystietojen sijaintia?"
+    };
+
+    if (props.value === "email" && props.valueTarget === "Footer") {
+      return "Oletko varma, että haluat muuttaa nykyistä sähköpostiosoitetta?"
+    };
+
+    if (props.value === "phoneNumber" && props.valueTarget === "Footer") {
+      return "Oletko varma, että haluat muuttaa nykyistä puhelinnumeroa?"
     } else {
       return null
     };
@@ -45,6 +53,10 @@ const OptionModal = ({ submitHomeContent, submitPricesDatabase, submitPriceConte
 
     if (props.value === "footerLocation" && props.valueTarget === "Footer") {
       submitLocationDatabase();
+    };
+
+    if (props.value === "email" || props.value === "phoneNumber" && props.valueTarget === "Footer") {
+      submitContactDatabase(props.value);
     } else {
       return null
     };
